@@ -1,15 +1,15 @@
 .. image:: https://readthedocs.org/projects/pymysql/badge/?version=latest
-:target: http://pymysql.readthedocs.io/en/latest/?badge=latest
+    :target: http://pymysql.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
 .. image:: https://travis-ci.org/PyMySQL/PyMySQL.svg?branch=master
-:target: https://travis-ci.org/PyMySQL/PyMySQL
+    :target: https://travis-ci.org/PyMySQL/PyMySQL
 
 .. image:: https://coveralls.io/repos/PyMySQL/PyMySQL/badge.svg?branch=master&service=github
-:target: https://coveralls.io/github/PyMySQL/PyMySQL?branch=master
+    :target: https://coveralls.io/github/PyMySQL/PyMySQL?branch=master
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
-:target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
+    :target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
 
 
 PyMysqlPool
