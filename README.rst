@@ -9,7 +9,7 @@
 :target: https://coveralls.io/github/PyMysqlPool/PyMysqlPool?branch=master
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
-:target: https://github.com/PyMysqlPool/PyMysqlPool/blob/master/LICENSE
+:target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
 
 
 PyMysqlPool
