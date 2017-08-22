@@ -16,7 +16,7 @@ PyMysqlPool
 =======
 
 .. contents:: Table of Contents
-:local:
+    :local:
 
 This package contains a pure-python mysql connector library. The goal of PyMysqlPool
 is to be a  mysql pool and motivation from=>[lost connection to MySQL server during query]  base on mysql-connector .
