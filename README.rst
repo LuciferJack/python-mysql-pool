@@ -52,6 +52,31 @@ The following pool examples below:
 
 .. code:: python
 
+    step:1
+
+    """
+    file:mysql_config.py change to your db config
+    """
+    db_config = {
+        'local': {
+            'host': "10.95.130.118", 'port': 8899,
+            'user': "root", 'passwd': "123456",
+            'db': "marry", 'charset': "utf8",
+        },
+        'poi': {
+            'host': "10.95.130.***", 'port': 8787,
+            'user': "lujunxu", 'passwd': "****",
+            'db': "poi_relation", 'charset': "utf8",
+        },
+    }
+
+    step:2
+
+    """
+    Note:create your own table
+    """
+
+    step:3
 
     """
     use pool
