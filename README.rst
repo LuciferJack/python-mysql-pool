@@ -76,7 +76,7 @@ The following pool examples below:
     Note:create your own table
     """
 
-    step:3
+    step:3 (example show below)
 
     """
     use pool
