@@ -1,0 +1,112 @@
+[2017-08-22 16:28:55,009][  ERROR][MainThread][mysql_util.py:query:28] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 2,stacks is (<frame object at 0x025D94B0>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:28:55,009][  ERROR][MainThread][mysql_util.py:query:29] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 24, in query
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\mysql\connector\cursor.py", line 552, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1
+[2017-08-22 16:32:13,802][  ERROR][MainThread][mysql_util.py:query:28] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 2,stacks is (<frame object at 0x025F74B0>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:32:13,802][  ERROR][MainThread][mysql_util.py:query:29] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 24, in query
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\mysql\connector\cursor.py", line 552, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1
+[2017-08-22 16:33:05,325][  ERROR][MainThread][mysql_util.py:query:28] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 2,stacks is (<frame object at 0x027F74B0>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:33:05,326][  ERROR][MainThread][mysql_util.py:query:29] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 24, in query
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\mysql\connector\cursor.py", line 552, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1
+[2017-08-22 16:34:19,519][  ERROR][MainThread][mysql_util.py:query:28] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 2,stacks is (<frame object at 0x027584B0>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:34:19,519][  ERROR][MainThread][mysql_util.py:query:29] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 24, in query
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\mysql\connector\cursor.py", line 552, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1
+[2017-08-22 16:42:56,450][  ERROR][MainThread][mysql_util.py:query:28] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 2,stacks is (<frame object at 0x03550030>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:42:56,450][  ERROR][MainThread][mysql_util.py:query:29] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 24, in query
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\mysql\connector\cursor.py", line 552, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1
+[2017-08-22 16:45:23,131][  ERROR][MainThread][mysql_util.py:query:28] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 2,stacks is (<frame object at 0x0363B7B0>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:45:23,563][  ERROR][MainThread][mysql_util.py:query:29] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 24, in query
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\mysql\connector\cursor.py", line 552, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1
+[2017-08-22 16:48:10,526][  ERROR][MainThread][mysql_util.py:query:28] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 2,stacks is (<frame object at 0x0374DC30>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:48:10,528][  ERROR][MainThread][mysql_util.py:query:29] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 24, in query
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\mysql\connector\cursor.py", line 552, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+OperationalError: 1156 (08S01): Got packets out of order
+[2017-08-22 16:54:57,226][  ERROR][MainThread][mysql_util.py:query:28] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 1,stacks is (<frame object at 0x037CA1B0>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:54:57,229][  ERROR][MainThread][mysql_util.py:query:29] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 24, in query
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\mysql\connector\cursor.py", line 552, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "D:\python27\lib\site-packages\mysql\connector\connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1
+[2017-08-22 16:56:12,299][  ERROR][MainThread][mysql_util.py:query_single:49] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 1,stacks is (<frame object at 0x025727B0>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:56:12,299][  ERROR][MainThread][mysql_util.py:query_single:50] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 45, in query_single
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\MySQLdb\cursors.py", line 187, in execute
+    query = query % tuple([db.literal(item) for item in args])
+TypeError: 'int' object is not iterable
+[2017-08-22 16:57:57,765][  ERROR][MainThread][mysql_util.py:query_single:49] query exception sql is select *  from master_job_list j  where j.job_status  !=%s  ,_args is 1,stacks is (<frame object at 0x026947B0>, 'D:\\githup\\python-mysql-pool\\util\\log_util.py', 31, 'get_caller_info_total', ['    frame_info = (frame, filename, line_number,function_name, lines, index) = inspect.getouterframes(inspect.currentframe())[0]\n'], 0)
+[2017-08-22 16:57:57,765][  ERROR][MainThread][mysql_util.py:query_single:50] message
+Traceback (most recent call last):
+  File "D:\githup\python-mysql-pool\db_util\mysql_util.py", line 45, in query_single
+    cursor.execute(_sql, _args)
+  File "D:\python27\lib\site-packages\MySQLdb\cursors.py", line 187, in execute
+    query = query % tuple([db.literal(item) for item in args])
+TypeError: 'int' object is not iterable
