@@ -80,8 +80,8 @@ def update(query_word,query_id):
 if __name__ == '__main__':
     logging.info('main starts...')
     query_pool()
-    query_pool_in()
-    query_npool()
-    query_pool_size()
+    #query_pool_in()
+    #query_npool()
+    #query_pool_size()
     logging.info('main stop')
     sys.exit(0)
