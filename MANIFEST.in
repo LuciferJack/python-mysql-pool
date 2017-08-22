@@ -1,4 +1,4 @@
-include LICENSE
+include LICENSE.txt
 include README.rst
 include AUTHORS
 
@@ -8,3 +8,5 @@ recursive-include docs *.empty
 recursive-include docs *.py
 recursive-include docs *.rst
 recursive-include docs Makefile
+# Include the data files
+recursive-include PyMysqlPool *
