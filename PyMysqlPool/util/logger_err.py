@@ -4,7 +4,7 @@
 import logging
 import sys
 
-from PyMysqlPool.constant.constant import loggingerr
+from PyMysqlPool.constant.constant import loggingerr, loggErrorFile
 
 logging.basicConfig(level=logging.NOTSET,
                     format='[%(asctime)s][%(levelname)7s][%(threadName)s][%(filename)s:%(funcName)s:%(lineno)d] %(message)s',
@@ -21,9 +21,10 @@ ch = logging.StreamHandler(stream=sys.stderr)
 ch.setLevel(logging.ERROR)
 # add ch to logger
 rootLogger.addHandler(ch)
-fileHandler = logging.FileHandler("{0}".format(loggingerr))
-fileHandler.setFormatter(logFormatter)
-rootLogger.addHandler(fileHandler)
+if loggErrorFile:
+    fileHandler = logging.FileHandler("{0}".format(loggingerr))
+    fileHandler.setFormatter(logFormatter)
+    rootLogger.addHandler(fileHandler)
 
 consoleHandler = logging.StreamHandler()
 consoleHandler.setFormatter(logFormatter)

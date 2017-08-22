@@ -9,7 +9,11 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 currentPath = os.path.split(os.path.realpath(__file__))[0]
-loggingerr=currentPath+'/../log/logging.err'
+#below is example
+#loggingerr=currentPath+'/../log/logging.err'
+
+loggErrorFile=''
+loggingerr=currentPath+'/../log/%s' % (loggErrorFile,)
 
 
 # MAIN
