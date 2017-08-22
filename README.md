@@ -1,2 +1,2 @@
-# python-mysql-pool
+# python-mysql-pool alias PyMysqlPool
 
