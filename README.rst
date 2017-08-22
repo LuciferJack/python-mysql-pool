@@ -18,35 +18,14 @@ PyMysqlPool
 .. contents:: Table of Contents
 :local:
 
-This package contains a pure-Python MySQL client library. The goal of PyMysqlPool
-is to be a drop-in replacement for MySQLdb and work on CPython, PyPy and IronPython.
-
-NOTE: PyMysqlPool doesn't support low level APIs `_mysql` provides like `data_seek`,
-`store_result`, and `use_result`. You should use high level APIs defined in `PEP 249`_.
-But some APIs like `autocommit` and `ping` are supported because `PEP 249`_ doesn't cover
-their usecase.
-
-.. _`PEP 249`: https://www.python.org/dev/peps/pep-0249/
+This package contains a pure-python mysql connector library. The goal of PyMysqlPool
+is to be a  mysql pool and motivation from=>[lost connection to MySQL server during query]  base on mysql-connector .
 
 Requirements
 -------------
 
 * Python -- one of the following:
-
-  - CPython_ >= 2.6 or >= 3.3
-  - PyPy_ >= 4.0
-  - IronPython_ 2.7
-
-* MySQL Server -- one of the following:
-
-  - MySQL_ >= 4.1  (tested with only 5.5~)
-  - MariaDB_ >= 5.1
-
-.. _CPython: http://www.python.org/
-.. _PyPy: http://pypy.org/
-.. _IronPython: http://ironpython.net/
-.. _MySQL: http://www.mysql.com/
-.. _MariaDB: https://mariadb.org/
+    None
 
 
 Installation
@@ -68,61 +47,86 @@ For support, please refer to the `StackOverflow
 Example
 -------
 
-The following examples make use of a simple table
-
-.. code:: sql
-
-   CREATE TABLE `users` (
-       `id` int(11) NOT NULL AUTO_INCREMENT,
-       `email` varchar(255) COLLATE utf8_bin NOT NULL,
-       `password` varchar(255) COLLATE utf8_bin NOT NULL,
-       PRIMARY KEY (`id`)
-   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
-   AUTO_INCREMENT=1 ;
+The following pool examples below:
 
 
 .. code:: python
 
-    import PyMysqlPool.cursors
 
-    # Connect to the database
-    connection = PyMysqlPool.connect(host='localhost',
-                                 user='user',
-                                 password='passwd',
-                                 db='db',
-                                 charset='utf8mb4',
-                                 cursorclass=PyMysqlPool.cursors.DictCursor)
+"""
+use pool
+"""
+def query_pool():
+    job_status = 2
+    _sql = "select *  from master_job_list j  where j.job_status  !=%s "
+    _args = (job_status,)
+    task = query('local', _sql,_args)
+    logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
+    return
 
-    try:
-        with connection.cursor() as cursor:
-            # Create a new record
-            sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
-            cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
 
-        # connection is not autocommit by default. So you must commit to save
-        # your changes.
-        connection.commit()
+"""
+pool in operation
+"""
+def query_pool_in():
+    job_status = 2
+    _sql = "select *  from master_job_list j  where j.job_status  in (%s) "
+    _args = (job_status,)
+    task = query('local', _sql,_args)
+    logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
+    return
 
-        with connection.cursor() as cursor:
-            # Read a single record
-            sql = "SELECT `id`, `password` FROM `users` WHERE `email`=%s"
-            cursor.execute(sql, ('webmaster@python.org',))
-            result = cursor.fetchone()
-            print(result)
-    finally:
-        connection.close()
+"""
+pool size special operation
+"""
+def query_pool_size():
+    job_status = 2
+    _sql = "select *  from master_job_list j  where j.job_status  in (%s) "
+    _args = (job_status,)
+    pool_info = {}
+    pool_info['pool_size'] = 100
+    task = query('local', _sql,_args)
+    logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
+    return
 
-This example will print:
+"""
+single query
+"""
+def query_npool():
+    job_status = 2
+    _sql = "select *  from master_job_list j  where j.job_status  !=%s "
+    _args = (job_status,)
+    task = query_single('local', _sql,_args)
+    logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
+    return
 
-.. code:: python
+"""
+insert
+"""
+def insert(nlp_rank_id,hit_query_word):
+    #add more args
+    _args = (nlp_rank_id,hit_query_word)
+    _sql = """INSERT INTO nlp_rank_poi_online (nlp_rank_id,hit_query_word,rank_type,poi_list,poi_raw_list,article_id,city_id,status,create_time,version,source_from) VALUES (%s,%s,%s, %s, %s,%s, %s,%s, %s,%s,%s)"""
+    affect = insertOrUpdate("local", _sql, _args)
+    logging.info("insert method insert result is %s ,input _data is %s ", affect , _args)
+    return
 
-    {'password': 'very-secret', 'id': 1}
+"""
+update
+"""
+def update(query_word,query_id):
+    _args = (query_word,query_id)
+    _sql = """update nlp_rank  set query_word = %s  WHERE  id = %s"""
+    affect = insertOrUpdate("local", _sql, _args)
+    logging.info("update method update result is %s ,input _data is %s ", affect , _args)
+    return
+
 
 
 Resources
 ---------
 
-DB-API 2.0: http://www.python.org/dev/peps/pep-0249
+python mysql connector: https://dev.mysql.com/downloads/connector/python/
 
 MySQL Reference Manuals: http://dev.mysql.com/doc/
 
