@@ -1,15 +1,15 @@
-.. image:: https://readthedocs.org/projects/PyMysqlPool/badge/?version=latest
-:target: http://PyMysqlPool.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
+    .. image:: https://readthedocs.org/projects/PyMysqlPool/badge/?version=latest
+    :target: http://PyMysqlPool.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
 
-.. image:: https://travis-ci.org/PyMysqlPool/PyMysqlPool.svg?branch=master
-:target: https://travis-ci.org/PyMysqlPool/PyMysqlPool
+    .. image:: https://travis-ci.org/PyMysqlPool/PyMysqlPool.svg?branch=master
+    :target: https://travis-ci.org/PyMysqlPool/PyMysqlPool
 
-.. image:: https://coveralls.io/repos/PyMysqlPool/PyMysqlPool/badge.svg?branch=master&service=github
-:target: https://coveralls.io/github/PyMysqlPool/PyMysqlPool?branch=master
+    .. image:: https://coveralls.io/repos/PyMysqlPool/PyMysqlPool/badge.svg?branch=master&service=github
+    :target: https://coveralls.io/github/PyMysqlPool/PyMysqlPool?branch=master
 
-.. image:: https://img.shields.io/badge/license-MIT-blue.svg
-:target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
+    .. image:: https://img.shields.io/badge/license-MIT-blue.svg
+    :target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
 
 
 PyMysqlPool
