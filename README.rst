@@ -53,9 +53,7 @@ The following pool examples below:
 .. code:: python
 
 
-"""
-use pool
-"""
+#use pool
 def query_pool():
     job_status = 2
     _sql = "select *  from master_job_list j  where j.job_status  !=%s "
