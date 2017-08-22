@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name = 'PyMysqlPool',
     packages = ['PyMysqlPool'], # this must be the same as the name above
-    version = '0.1',
+    version = '0.2',
     description = 'python practical mysql pool -motivation from=>[lost connection to MySQL server during query]  base on mysql-connector ',
     author = 'Lucifer Jack',
     author_email = 'lujunxucuc@gmail.com',
