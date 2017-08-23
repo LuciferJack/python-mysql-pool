@@ -2,7 +2,7 @@
     :target: http://pymysql.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-.. image:: https://travis-ci.org/PyMySQL/PyMySQL.svg?branch=master
+.. image:: https://api.travis-ci.org/LuciferJack/python-mysql-pool.svg?branch=master
     :target: https://travis-ci.org/LuciferJack/python-mysql-pool
 
 .. image:: https://coveralls.io/repos/PyMySQL/PyMySQL/badge.svg?branch=master&service=github
