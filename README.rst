@@ -1,12 +1,5 @@
-.. image:: https://readthedocs.org/projects/pymysql/badge/?version=latest
-    :target: http://pymysql.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
-
 .. image:: https://api.travis-ci.org/LuciferJack/python-mysql-pool.svg?branch=master
     :target: https://travis-ci.org/LuciferJack/python-mysql-pool
-
-.. image:: https://coveralls.io/repos/PyMySQL/PyMySQL/badge.svg?branch=master&service=github
-    :target: https://coveralls.io/github/PyMySQL/PyMySQL?branch=master
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
