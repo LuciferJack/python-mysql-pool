@@ -3,7 +3,7 @@
     :alt: Documentation Status
 
 .. image:: https://travis-ci.org/PyMySQL/PyMySQL.svg?branch=master
-    :target: https://travis-ci.org/PyMySQL/PyMySQL
+    :target: https://travis-ci.org/LuciferJack/python-mysql-pool
 
 .. image:: https://coveralls.io/repos/PyMySQL/PyMySQL/badge.svg?branch=master&service=github
     :target: https://coveralls.io/github/PyMySQL/PyMySQL?branch=master
