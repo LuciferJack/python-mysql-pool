@@ -17,14 +17,15 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='PyMysqlPool',
+    name='PyMysqlPool(support fixed 、dynamic pool)',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.4',
+    version='0.5',
 
-    description='python practical mysql pool -motivation from=>[lost connection to MySQL server during query]  base on mysql-connector ',
+    description='python practical mysql pool -motivation from=>[lost connection to MySQL server during query]  base on mysql-connector '
+                'support fixed 、dynamic pool',
     long_description=long_description,
 
     # The project's main homepage.
@@ -63,7 +64,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords=['mysql pool', 'queue', 'support list'],
+    keywords=['mysql pool', 'queue', 'support list','dynamic pool','fixed pool'],
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().

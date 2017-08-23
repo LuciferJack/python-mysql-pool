@@ -9,10 +9,26 @@ db_config = {
         'host': "10.95.130.118", 'port': 8899,
         'user': "root", 'passwd': "123456",
         'db': "marry", 'charset': "utf8",
+        'pool': {
+            #use = 0 no pool else use pool
+            "use":1,
+            # size is >=0,  0 is dynamic pool
+            "size":0,
+            #pool name
+            "name":"local",
+        }
     },
     'poi': {
         'host': "10.95.130.***", 'port': 8787,
         'user': "lujunxu", 'passwd': "****",
         'db': "poi_relation", 'charset': "utf8",
+        'pool': {
+            #use = 0 no pool else use pool
+            "use":0,
+            # size is >=0,  0 is dynamic pool
+            "size":0,
+            #pool name
+            "name":"poi",
+        }
     },
 }

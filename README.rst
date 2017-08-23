@@ -23,9 +23,17 @@ is to be a  mysql pool and motivation from=>[lost connection to MySQL server dur
 
 Requirements
 -------------
-
+* Python lib -- one of the following:
+    MySQLdb
 * Python -- one of the following:
-    None
+    success test in python >=2.7
+
+* MySQL Server -- one of the following:
+
+  - MySQL_ >= 5.5  (success test with only >=5.5~)
+
+
+
 
 
 Installation
@@ -58,17 +66,33 @@ The following pool examples below:
     file:mysql_config.py change to your db config
     """
     db_config = {
-        'local': {
-            'host': "10.95.130.118", 'port': 8899,
-            'user': "root", 'passwd': "123456",
-            'db': "marry", 'charset': "utf8",
-        },
-        'poi': {
-            'host': "10.95.130.***", 'port': 8787,
-            'user': "lujunxu", 'passwd': "****",
-            'db': "poi_relation", 'charset': "utf8",
-        },
-    }
+    'local': {
+        'host': "10.95.130.118", 'port': 8899,
+        'user': "root", 'passwd': "123456",
+        'db': "marry", 'charset': "utf8",
+        'pool': {
+            #use = 0 no pool else use pool
+            "use":1,
+            # size is >=0,  0 is dynamic pool
+            "size":0,
+            #pool name
+            "name":"local",
+        }
+    },
+    'poi': {
+        'host': "10.95.130.***", 'port': 8787,
+        'user': "lujunxu", 'passwd': "****",
+        'db': "poi_relation", 'charset': "utf8",
+        'pool': {
+            #use = 0 no pool else use pool
+            "use":0,
+            # size is >=0,  0 is dynamic pool
+            "size":0,
+            #pool name
+            "name":"poi",
+        }
+    },
+}
 
     step:2
 
@@ -79,38 +103,13 @@ The following pool examples below:
     step:3 (example show below)
 
     """
-    use pool
-    """
-    def query_pool():
-        job_status = 2
-        _sql = "select *  from master_job_list j  where j.job_status  !=%s "
-        _args = (job_status,)
-        task = query('local', _sql,_args)
-        logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
-        return
-
-
-    """
-    pool in operation
-    """
-    def query_pool_in():
-        job_status = 2
-        _sql = "select *  from master_job_list j  where j.job_status  in (%s) "
-        _args = (job_status,)
-        task = query('local', _sql,_args)
-        logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
-        return
-
-    """
     pool size special operation
     """
     def query_pool_size():
         job_status = 2
         _sql = "select *  from master_job_list j  where j.job_status  in (%s) "
         _args = (job_status,)
-        pool_info = {}
-        pool_info['pool_size'] = 100
-        task = query('local', _sql,_args)
+        task = query(db_config['local'], _sql,_args)
         logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
         return
 
@@ -121,7 +120,7 @@ The following pool examples below:
         job_status = 2
         _sql = "select *  from master_job_list j  where j.job_status  !=%s "
         _args = (job_status,)
-        task = query_single('local', _sql,_args)
+        task = query_single(db_config['local'], _sql,_args)
         logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
         return
 
@@ -132,7 +131,7 @@ The following pool examples below:
         #add more args
         _args = (nlp_rank_id,hit_query_word)
         _sql = """INSERT INTO nlp_rank_poi_online (nlp_rank_id,hit_query_word,rank_type,poi_list,poi_raw_list,article_id,city_id,status,create_time,version,source_from) VALUES (%s,%s,%s, %s, %s,%s, %s,%s, %s,%s,%s)"""
-        affect = insertOrUpdate("local", _sql, _args)
+        affect = insertOrUpdate(db_config['local'], _sql, _args)
         logging.info("insert method insert result is %s ,input _data is %s ", affect , _args)
         return
 
@@ -142,7 +141,7 @@ The following pool examples below:
     def update(query_word,query_id):
         _args = (query_word,query_id)
         _sql = """update nlp_rank  set query_word = %s  WHERE  id = %s"""
-        affect = insertOrUpdate("local", _sql, _args)
+        affect = insertOrUpdate(db_config['local'], _sql, _args)
         logging.info("update method update result is %s ,input _data is %s ", affect , _args)
         return
 

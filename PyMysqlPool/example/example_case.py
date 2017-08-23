@@ -4,6 +4,7 @@
 import logging
 import sys
 
+from PyMysqlPool.db_util.db_config.mysql_config import db_config
 from PyMysqlPool.db_util.mysql_util import query, query_single, insertOrUpdate
 
 # MAIN
@@ -16,7 +17,7 @@ def query_pool():
     job_status = 2
     _sql = "select *  from master_job_list j  where j.job_status  !=%s "
     _args = (job_status,)
-    task = query('local', _sql,_args)
+    task = query(db_config['local'], _sql,_args)
     logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
     return
 
@@ -28,7 +29,7 @@ def query_pool_in():
     job_status = 2
     _sql = "select *  from master_job_list j  where j.job_status  in (%s) "
     _args = (job_status,)
-    task = query('local', _sql,_args)
+    task = query(db_config['local'], _sql, _args)
     logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
     return
 
@@ -39,9 +40,7 @@ def query_pool_size():
     job_status = 2
     _sql = "select *  from master_job_list j  where j.job_status  in (%s) "
     _args = (job_status,)
-    pool_info = {}
-    pool_info['pool_size'] = 100
-    task = query('local', _sql,_args)
+    task = query(db_config['local'], _sql,_args)
     logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
     return
 
@@ -52,7 +51,7 @@ def query_npool():
     job_status = 2
     _sql = "select *  from master_job_list j  where j.job_status  !=%s "
     _args = (job_status,)
-    task = query_single('local', _sql,_args)
+    task = query_single(db_config['local'], _sql,_args)
     logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
     return
 
@@ -63,7 +62,7 @@ def insert(nlp_rank_id,hit_query_word):
     #add more args
     _args = (nlp_rank_id,hit_query_word)
     _sql = """INSERT INTO nlp_rank_poi_online (nlp_rank_id,hit_query_word,rank_type,poi_list,poi_raw_list,article_id,city_id,status,create_time,version,source_from) VALUES (%s,%s,%s, %s, %s,%s, %s,%s, %s,%s,%s)"""
-    affect = insertOrUpdate("local", _sql, _args)
+    affect = insertOrUpdate(db_config['local'], _sql, _args)
     logging.info("insert method insert result is %s ,input _data is %s ", affect , _args)
     return
 
@@ -73,16 +72,24 @@ update
 def update(query_word,query_id):
     _args = (query_word,query_id)
     _sql = """update nlp_rank  set query_word = %s  WHERE  id = %s"""
-    affect = insertOrUpdate("local", _sql, _args)
+    affect = insertOrUpdate(db_config['local'], _sql, _args)
     logging.info("update method update result is %s ,input _data is %s ", affect , _args)
+    return
+
+"""
+dynamic pool
+"""
+def d_query():
+    job_status = 2
+    _sql = "select *  from master_job_list j  where j.job_status  !=%s "
+    _args = (job_status,)
+    task = query(db_config['local'], _sql,_args)
+    logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
     return
 
 
 if __name__ == '__main__':
     logging.info('main starts...')
-    query_pool()
-    #query_pool_in()
-    #query_npool()
-    #query_pool_size()
+    d_query()
     logging.info('main stop')
     sys.exit(0)

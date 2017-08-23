@@ -53,7 +53,7 @@ _CONNECTION_POOLS = {}
 def _get_pooled_connection(**kwargs):
     """Return a pooled MySQL connection"""
     # If no pool name specified, generate one
-    from .pooling import (
+    from .dpooling import (
         MySQLConnectionPool, generate_pool_name,
         CONNECTION_POOL_LOCK)
 
@@ -69,10 +69,12 @@ def _get_pooled_connection(**kwargs):
         elif isinstance(_CONNECTION_POOLS[pool_name], MySQLConnectionPool):
             # pool_size must be the same
             check_size = _CONNECTION_POOLS[pool_name].pool_size
+            """
             if ('pool_size' in kwargs
                     and kwargs['pool_size'] != check_size):
-                raise PoolError("Size can not be changed "
+               print ("Size will be changed "
                                 "for active pools.")
+          """
 
     # Return pooled connection
     try:
