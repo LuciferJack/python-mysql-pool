@@ -30,7 +30,7 @@ Requirements
 
 * MySQL Server -- one of the following:
 
-  - MySQL_ >= 5.5  (success test with only >=5.5~)
+  - MySQL_ >= 5.5  (success test with >=5.5~)
 
 
 
