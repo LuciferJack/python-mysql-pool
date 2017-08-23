@@ -161,5 +161,8 @@ PyMysqlPool mailing list: https://groups.google.com/forum/#!forum/PyMysqlPool-us
 
 License
 -------
-
 PyMysqlPool is released under the MIT License. See LICENSE for more information.
+
+Scope
+-------
+Now use in  poi off-line calculation module
