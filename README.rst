@@ -158,4 +158,4 @@ PyMysqlPool is released under the MIT License. See LICENSE for more information.
 
 Scope
 -------
-Now use in  poi off-line calculation module
+Now use in  BaiDu poi off-line calculation module
