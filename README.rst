@@ -34,7 +34,7 @@ Installation
 
 The last stable release is available on PyPI and can be installed with ``pip``::
 
-    $ pip install PyMysqlPool
+    **$ pip install PyMysqlPool**
 
 
 Documentation
@@ -158,4 +158,4 @@ PyMysqlPool is released under the MIT License. See LICENSE for more information.
 
 Scope
 -------
-Now use in  BaiDu poi off-line calculation module
+Now use in  **BaiDu** off-line calculation module
