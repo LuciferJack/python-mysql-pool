@@ -60,8 +60,8 @@ The following pool examples below:
     """
     db_config = {
         'local': {
-            'host': "10.95.130.118", 'port': 8899,
-            'user': "root", 'passwd': "123456",
+            'host': "10.95.130.***", 'port': 8899,
+            'user': "root", 'passwd': "****",
             'db': "marry", 'charset': "utf8",
             'pool': {
                 #use = 0 no pool else use pool
