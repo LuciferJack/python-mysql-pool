@@ -19,7 +19,7 @@ This package contains a pure-python mysql connector library. The goal of PyMysql
 is to be a  mysql pool and motivation from=>[lost connection to MySQL server during query]  base on mysql-connector .
 
 feature
-  * easy to use!.
+  * easy to use.
   * support 【fixed 、dynamic pool】.
   * manage 【fail/lost connection】.
 
@@ -30,8 +30,7 @@ Requirements
 * Python -- one of the following:
     success test in python >=2.7
 * MySQL Server -- one of the following:
-
-    - MySQL_ >= 5.5  (success test with >=5.5~)
+  - MySQL_ >= 5.5  (success test with >=5.5~)
 
 
 Installation
@@ -163,10 +162,10 @@ PyMysqlPool is released under the MIT License. See LICENSE for more information.
 
 Plan
 -------
-  |Dynamic Load Optimization.
-  |Minimum number of connections to maximum performance.
+  | Dynamic Load Optimization.
+  | Minimum number of connections to maximum performance.
 
 Scope
 -------
-  |Now use in  **BaiDu** off-line calculation module.
-  |Like this project, welcome to use and to enhance together.
+  | Now use in  **BaiDu** off-line calculation module.
+  | Like this project, welcome to use and to enhance together.
