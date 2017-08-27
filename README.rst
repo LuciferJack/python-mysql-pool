@@ -30,7 +30,7 @@ Requirements
 * Python -- one of the following:
     success test in python >=2.7
 * MySQL Server -- one of the following:
-  - MySQL_ >= 5.5  (success test with >=5.5~)
+   - MySQL_ >= 5.5  (success test with >=5.5~)
 
 
 Installation
