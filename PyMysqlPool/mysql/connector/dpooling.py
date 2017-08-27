@@ -27,6 +27,8 @@
 import re
 from uuid import uuid4
 # pylint: disable=F0401
+from PyMysqlPool.util.py_net_util import get_ip_address
+
 try:
     import queue
 except ImportError:

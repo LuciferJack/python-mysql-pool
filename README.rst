@@ -11,8 +11,17 @@ PyMysqlPool
 .. contents:: Table of Contents
     :local:
 
+
+Desc
+-------------
 This package contains a pure-python mysql connector library. The goal of PyMysqlPool
 is to be a  mysql pool and motivation from=>[lost connection to MySQL server during query]  base on mysql-connector .
+
+python practical mysql pool :
+* easy to use!
+* support 【fixed 、dynamic pool】.
+* manage 【fail/lost connection】.
+* Now use in baidu poi off-line calculation
 
 Requirements
 -------------
@@ -156,6 +165,12 @@ License
 -------
 PyMysqlPool is released under the MIT License. See LICENSE for more information.
 
+Plan
+-------
+Dynamic Load Optimization
+Minimum number of connections to maximum performance
+
 Scope
 -------
 Now use in  **BaiDu** off-line calculation module
+Like this project, welcome to use and to enhance together
