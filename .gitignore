@@ -2,3 +2,4 @@
 .idea/
 python-mysql-pool.iml
 *.pypirc
+mysql_config.py
