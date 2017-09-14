@@ -99,6 +99,8 @@ The following pool examples below:
 
     step:3 (example show below)
 
+    from PyMysqlPool.db_util.mysql_util import query,query_single,insertOrUpdate,
+
     """
     pool size special operation
     """
