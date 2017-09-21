@@ -29,5 +29,3 @@ if loggErrorFile:
 consoleHandler = logging.StreamHandler()
 consoleHandler.setFormatter(logFormatter)
 rootLogger.addHandler(consoleHandler)
-
-#rootLogger.error("hhhh")

@@ -14,6 +14,8 @@ db_config = {
             "use":1,
             # size is >=0,  0 is dynamic pool
             "size":0,
+            #support max_conn 0 use default  > 0 use the max_conn
+            "max_conn":0,
             #pool name
             "name":"local",
         }
@@ -27,6 +29,8 @@ db_config = {
             "use":0,
             # size is >=0,  0 is dynamic pool
             "size":0,
+            #support max_conn 0 use default  > 0 use the max_conn
+            "max_conn":0,
             #pool name
             "name":"poi",
         }

@@ -35,6 +35,8 @@ from bisect import bisect
 from hashlib import md5
 
 # pylint: disable=F0401,E0611
+import PyMysqlPool
+
 try:
     from xmlrpclib import Fault, ServerProxy, Transport
     import urllib2
@@ -63,7 +65,7 @@ else:
 
 from ..connection import MySQLConnection
 from ..conversion import MySQLConverter
-from ..pooling import MySQLConnectionPool
+from ..dpooling import MySQLConnectionPool
 from ..errors import (
     Error, InterfaceError, NotSupportedError, MySQLFabricError, InternalError,
     DatabaseError

@@ -20,6 +20,7 @@ import sys
 import warnings
 from datetime import datetime
 
+import PyMysqlPool
 import django
 from django.utils.functional import cached_property
 
@@ -65,11 +66,11 @@ from django.db.backends.signals import connection_created
 from django.utils import (six, timezone, dateparse)
 from django.conf import settings
 
-from PyMysqlPool.mysql.connector.django import DatabaseClient
+from PyMysqlPool.mysql.connector.django.client import DatabaseClient
 from PyMysqlPool.mysql.connector.django.creation import DatabaseCreation
-from PyMysqlPool.mysql.connector.django import DatabaseIntrospection
+from PyMysqlPool.mysql.connector.django.introspection import DatabaseIntrospection
 from PyMysqlPool.mysql.connector.django.validation import DatabaseValidation
-from PyMysqlPool.mysql.connector.django import DatabaseFeatures
+from PyMysqlPool.mysql.connector.django.features import DatabaseFeatures
 from PyMysqlPool.mysql.connector.django.operations import DatabaseOperations
 if django.VERSION >= (1, 7):
     from PyMysqlPool.mysql.connector.django.schema import DatabaseSchemaEditor

@@ -20,7 +20,7 @@ if django.VERSION >= (1, 6):
     if django.VERSION >= (1, 7):
         from django.utils.datastructures import OrderedSet
 
-from PyMysqlPool.mysql import FieldType
+from PyMysqlPool.mysql.connector.constants import FieldType
 
 foreign_key_re = re.compile(r"\sCONSTRAINT `[^`]*` FOREIGN KEY \(`([^`]*)`\) "
                             r"REFERENCES `([^`]*)` \(`([^`]*)`\)")

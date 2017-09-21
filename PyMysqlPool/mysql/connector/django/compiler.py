@@ -3,7 +3,11 @@
 
 import django
 from django.db.models.sql import compiler
-from django.utils.six.moves import zip_longest
+try:
+    from itertools import zip_longest as zip_longest
+except:
+    from itertools import izip_longest as zip_longest
+#from django.utils.six.moves import zip_longest
 
 
 class SQLCompiler(compiler.SQLCompiler):

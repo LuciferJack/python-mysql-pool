@@ -16,5 +16,5 @@ ch = logging.StreamHandler(stream=sys.stdout)
 ch.setLevel(logging.INFO)
 # add ch to logger
 logger.addHandler(ch)
-#禁止所有日志产出
+#disable all
 #logger.propagate = False

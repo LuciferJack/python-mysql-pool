@@ -13,7 +13,7 @@ def doPoiWork():
 def thread_case(concurrent):
     for i in range(concurrent):
         t = Thread(target=doPoiWork,args=())
-        #t.daemon = True
+        t.daemon = True
         t.start()
 
 
