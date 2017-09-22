@@ -1,16 +1,12 @@
-.. image:: https://api.travis-ci.org/LuciferJack/python-mysql-pool.svg?branch=master
-:target: https://travis-ci.org/LuciferJack/python-mysql-pool
-
-.. image:: https://img.shields.io/badge/license-MIT-blue.svg
-:target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
-
-
 PyMysqlPool
 ==================
 
-.. contents:: Table of Contents
-:local:
+.. image:: https://api.travis-ci.org/LuciferJack/python-mysql-pool.svg?branch=master
+ :target: https://travis-ci.org/LuciferJack/python-mysql-pool
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
+ :target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
 
+.. contents:: Table of Contents
 
 Desc
 -------------
