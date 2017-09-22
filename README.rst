@@ -210,3 +210,5 @@ Frequency Ask
 -------------
 * Django support -- test on one of the following:
     Django 1.11.5
+    show case
+    :target: https://github.com/LuciferJack/Django-pool-showcase
