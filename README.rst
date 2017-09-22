@@ -1,15 +1,15 @@
 .. image:: https://api.travis-ci.org/LuciferJack/python-mysql-pool.svg?branch=master
-    :target: https://travis-ci.org/LuciferJack/python-mysql-pool
+:target: https://travis-ci.org/LuciferJack/python-mysql-pool
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
-    :target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
+:target: https://github.com/LuciferJack/python-mysql-pool/blob/master/LICENSE.txt
 
 
 PyMysqlPool
-=======
+==================
 
 .. contents:: Table of Contents
-    :local:
+:local:
 
 
 Desc
@@ -31,7 +31,7 @@ Requirements
 * Python -- one of the following:
     success test in python >=2.7
 * MySQL Server -- one of the following:
-   - MySQL_ >= 5.5  (success test with >=5.5~)
+   MySQL >= 5.5  (success test with >=5.5~)
 
 
 Installation
