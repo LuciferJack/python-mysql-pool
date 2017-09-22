@@ -43,7 +43,7 @@ You can installed with ``easy_install``::
 
 You can installed with ``manually``::
 
-    $ git clone or  get tar.gz
+    $ git clone https://github.com/LuciferJack/python-mysql-pool.git or  download  ***.tar.gz
 
     $ cd PyMysqlPool-***
 
