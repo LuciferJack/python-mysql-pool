@@ -37,6 +37,17 @@ The last stable release is available on PyPI and can be installed with ``pip``::
 
     $ pip install PyMysqlPool
 
+You can installed with ``easy_install``::
+
+    $ easy_install PyMysqlPool
+
+You can installed with ``manually``::
+
+    $ git clone or  get tar.gz
+
+    $ cd PyMysqlPool-***
+
+    $ python setup.py install
 
 Documentation
 -------------
