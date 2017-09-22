@@ -20,8 +20,9 @@ is to be a  mysql pool and motivation from=>[lost connection to MySQL server dur
 
 feature
   * easy to use.
-  * support 【fixed 、dynamic pool】.
+  * support 【no、fixed 、dynamic pool】.
   * manage 【fail/lost connection】.
+  * support 【no、fixed 、dynamic pool】=>Django framework.
 
 Requirements
 -------------
@@ -146,6 +147,39 @@ The following pool examples below:
 
 
 
+
+.. code:: python
+
+    Django use example:
+
+    """
+    file:settings.py
+    change to your db config
+    """
+    DATABASES = {
+    'default': {
+        'ENGINE': 'PyMysqlPool.mysql.connector.django',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': '10.95.130.118',
+        'PORT': '8899',
+        'OPTIONS': {
+            'autocommit': True,
+            'pool': {
+                #use = 0 no pool else use pool
+                "use":1,
+                # size is >=0,  0 is dynamic pool
+                "size":0,
+                #pool name
+                "name":"local",
+                        }
+                    },
+                }
+         }
+
+
+
 Resources
 ---------
 
@@ -171,3 +205,8 @@ Scope
 -------
   | Now use in  **BaiDu** off-line calculation module.
   | Like this project, welcome to use and to enhance together.
+
+Frequency Ask
+-------------
+* Django support -- test on one of the following:
+    Django 1.11.5

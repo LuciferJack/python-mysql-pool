@@ -20,6 +20,8 @@ import sys
 import warnings
 from datetime import datetime
 
+from PyMysqlPool.mysql.connector import errors
+
 import PyMysqlPool
 import django
 from django.utils.functional import cached_property
@@ -331,8 +333,16 @@ class DatabaseWrapper(BaseDatabaseWrapper):
 
     SchemaEditorClass = DatabaseSchemaEditor
     Database = PyMysqlPool.mysql.connector
+    # Classes instantiated in __init__().
+    client_class = DatabaseClient
+    creation_class = DatabaseCreation
+    features_class = DatabaseFeatures
+    introspection_class = DatabaseIntrospection
+    ops_class = DatabaseOperations
+    validation_class = DatabaseValidation
 
     def __init__(self, *args, **kwargs):
+        self.extract_pool(args)
         super(DatabaseWrapper, self).__init__(*args, **kwargs)
 
         try:
@@ -418,8 +428,22 @@ class DatabaseWrapper(BaseDatabaseWrapper):
             except AttributeError:
                 self._set_autocommit(self.settings_dict['AUTOCOMMIT'])
 
-    def create_cursor(self):
-        # Django 1.6
+    def extract_pool(self, args):
+        if len(args) > 0:
+            if 'OPTIONS' in args[0] and 'pool' in args[0]['OPTIONS']:
+                if 'use' in args[0]['OPTIONS']['pool'] \
+                        and args[0]['OPTIONS']['pool']['use']:
+                    if 'size' not in args[0]['OPTIONS']['pool']:
+                        raise errors.OperationalError("MySQL pool config error must pool key size")
+                    if 'name' not in args[0]['OPTIONS']['pool']:
+                        raise errors.OperationalError("MySQL pool config error must pool key name")
+                    args[0]['OPTIONS']['pool_name'] = args[0]['OPTIONS']['pool']['name']
+                    args[0]['OPTIONS']['pool_size'] = args[0]['OPTIONS']['pool']['size']
+            if 'pool' in args[0]['OPTIONS']:
+                del args[0]['OPTIONS']['pool']
+
+    def create_cursor(self, name=None):
+        # Django >= 1.6
         cursor = self.connection.cursor()
         return CursorWrapper(cursor)
 
