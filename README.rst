@@ -161,8 +161,8 @@ The following pool examples below:
         'ENGINE': 'PyMysqlPool.mysql.connector.django',
         'NAME': 'django',
         'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': '10.95.130.118',
+        'PASSWORD': '*******',
+        'HOST': '10.95.130.***',
         'PORT': '8899',
         'OPTIONS': {
             'autocommit': True,
@@ -173,10 +173,10 @@ The following pool examples below:
                 "size":0,
                 #pool name
                 "name":"local",
-                        }
-                    },
-                }
-         }
+            }
+        },
+    }
+}
 
 
 
