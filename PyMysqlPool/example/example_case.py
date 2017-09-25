@@ -87,7 +87,6 @@ def d_query():
     logging.info("query_npool method query_npool result is %s ,input _data is %s ", task , _args)
     return
 
-
 if __name__ == '__main__':
     logging.info('main starts...')
     d_query()

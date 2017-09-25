@@ -5,7 +5,9 @@ https://github.com/pypa/sampleproject
 """
 
 # Always prefer setuptools over distutils
-from setuptools import setup, find_packages
+import os
+
+from setuptools import setup, find_packages, Command
 # To use a consistent encoding
 from codecs import open
 from os import path
@@ -16,13 +18,24 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
+class CleanCommand(Command):
+    """Custom clean command to tidy up the project root."""
+    user_options = []
+    def initialize_options(self):
+        pass
+    def finalize_options(self):
+        pass
+    def run(self):
+        os.system("find ./ -name '*.pyc' | xargs rm")
+
+# Further down when you call setup()
 setup(
     name='PyMysqlPool',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.0.1',
+    version='1.0.2',
 
     description='python practical mysql pool -motivation from=>[lost connection to MySQL server during query]  base on mysql-connector '
                 'support fixed | dynamic pool',
@@ -111,4 +124,8 @@ setup(
            # 'sample=sample:main',
        # ],
     },
+    # ... Other setup options
+    cmdclass={
+        'clean': CleanCommand,
+    }
 )
