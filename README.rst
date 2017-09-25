@@ -61,7 +61,7 @@ For support, please refer to the `StackOverflow
 Example
 -------
 
-The following  pool examples below:
+The following  prototype_ pool examples below:
 
 .. _prototype:
 
@@ -217,6 +217,7 @@ The following  pool examples below:
     )
     mysql = MySQL()
     mysql.init_app(app)
+
 
 
 or use the connection type like prototype_ method.
