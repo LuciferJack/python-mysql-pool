@@ -61,9 +61,10 @@ For support, please refer to the `StackOverflow
 Example
 -------
 
+.. _prototype:
+
 The following  prototype_ pool examples below:
 
-.. _prototype:
 
 .. code:: python
 
