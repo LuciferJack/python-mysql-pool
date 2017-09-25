@@ -61,15 +61,16 @@ For support, please refer to the `StackOverflow
 Example
 -------
 
-The following pool examples below:
+The following  pool examples below:
 
+.. _prototype:
 
 .. code:: python
 
     step:1
 
     """
-    file:mysql_config.py change to your db config
+    file: new a mysql_config.py file and change to your db config
     """
     db_config = {
         'local': {
@@ -193,6 +194,8 @@ The following pool examples below:
     """
     change to your db config
     """
+    from PyMysqlPool.mysql.connector.flask.mysql import MySQL
+
     app = Flask(__name__,template_folder='flaskPoolShowcase/flask_templates')
     #mysql config
     app.config.update(
@@ -214,6 +217,9 @@ The following pool examples below:
     )
     mysql = MySQL()
     mysql.init_app(app)
+
+
+or use the connection type like prototype_ method.
 
 Resources
 ---------

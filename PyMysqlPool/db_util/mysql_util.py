@@ -3,8 +3,6 @@
 # coding=utf-8
 import sys
 from time import sleep
-
-from PyMysqlPool.db_util.db_config.mysql_config import db_config
 from PyMysqlPool.db_util.mysql_pool import get_pool_connection
 from PyMysqlPool.mysql.connector.dpooling import PooledMySQLConnection
 from PyMysqlPool.util.log_util import get_caller_info_total, get_caller_function

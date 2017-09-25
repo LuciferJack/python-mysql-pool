@@ -5,7 +5,7 @@ import MySQLdb
 from mysql.connector import errors
 
 import PyMysqlPool.mysql.connector
-from PyMysqlPool.db_util.db_config.mysql_config import db_config
+from PyMysqlPool.db_util.db_config.example_config import example_config
 from PyMysqlPool.db_util.python_rf.pool_convertor import FuzzyMySQLConverter
 
 
