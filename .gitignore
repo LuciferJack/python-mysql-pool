@@ -3,3 +3,4 @@
 python-mysql-pool.iml
 *.pypirc
 mysql_config.py
+example_config.py
