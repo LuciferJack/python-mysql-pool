@@ -17,8 +17,9 @@ is to be a  mysql pool and motivation from=>[lost connection to MySQL server dur
 feature
   * easy to use.
   * support 【no、fixed 、dynamic pool】.
-  * manage 【fail/lost connection】.
+  * manage  【fail/lost connection】.
   * support 【no、fixed 、dynamic pool】=>Django framework.
+  * support 【no、fixed 、dynamic pool】=>Flask framework.
 
 Requirements
 -------------
@@ -185,7 +186,34 @@ The following pool examples below:
        }
      }
 
+.. code:: python
 
+    Flask use example:
+
+    """
+    change to your db config
+    """
+    app = Flask(__name__,template_folder='flaskPoolShowcase/flask_templates')
+    #mysql config
+    app.config.update(
+        DEBUG=False,
+        MYSQL_DATABASE_HOST='10.95.130.***',
+        MYSQL_DATABASE_PORT=8899,
+        MYSQL_DATABASE_USER='root',
+        MYSQL_DATABASE_PASSWORD='******',
+        MYSQL_DATABASE_DB='flask',
+        MYSQL_USE_POOL=
+        {
+            #use = 0 no pool else use pool
+            "use":0,
+            # size is >=0,  0 is dynamic pool
+            "size":10,
+            #pool name
+            "name":"local",
+        },
+    )
+    mysql = MySQL()
+    mysql.init_app(app)
 
 Resources
 ---------
@@ -218,3 +246,6 @@ Frequency Ask
 * Django support -- test on one of the following:
     Django 1.11.5
     show case: https://github.com/LuciferJack/Django-pool-showcase
+* Flask support -- test on one of the following:
+    Flask 0.12.2
+    show case: https://github.com/LuciferJack/Flask-pool-showcase

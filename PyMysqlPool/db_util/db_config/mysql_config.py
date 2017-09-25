@@ -13,7 +13,7 @@ db_config = {
             #use = 0 no pool else use pool
             "use":1,
             # size is >=0,  0 is dynamic pool
-            "size":0,
+            "size":10,
             #pool name
             "name":"local",
         }

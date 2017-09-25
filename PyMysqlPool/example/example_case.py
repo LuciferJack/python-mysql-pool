@@ -80,7 +80,7 @@ def update(query_word,query_id):
 dynamic pool
 """
 def d_query():
-    job_status = 2
+    job_status = 1
     _sql = "select *  from master_job_list j  where j.job_status  !=%s "
     _args = (job_status,)
     task = query(db_config['local'], _sql,_args)

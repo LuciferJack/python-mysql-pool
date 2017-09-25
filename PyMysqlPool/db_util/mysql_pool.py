@@ -16,14 +16,15 @@ def get_pool_connection(_db_config):
 def get_pool_conn_implicitly(_db_config):
     config = _db_config
     if 'pool' not in config:
-        raise errors.OperationalError("MySQL config error must pool key")
-    pool = config['pool']
-    if 'use' not in pool:
-        raise errors.OperationalError("MySQL pool config error must pool key use")
-    if 'size' not in pool:
-        raise errors.OperationalError("MySQL pool config error must pool key size")
-    if 'name' not in pool:
-        raise errors.OperationalError("MySQL pool config error must pool key name")
+        pool = None
+    else:
+        pool = config['pool']
+        if 'use' not in pool:
+            raise errors.OperationalError("MySQL pool config error must pool key use")
+        if 'size' not in pool:
+            raise errors.OperationalError("MySQL pool config error must pool key size")
+        if 'name' not in pool:
+            raise errors.OperationalError("MySQL pool config error must pool key name")
 
     if pool and pool['use']:
         conn = PyMysqlPool.mysql.connector.connect(pool_name=pool['name'], pool_size=pool['size'],
