@@ -28,8 +28,8 @@ import datetime
 import time
 from decimal import Decimal
 
-from .constants import FieldType, FieldFlag, CharacterSet
 from .catch23 import PY2, NUMERIC_TYPES, struct_unpack
+from .constants import FieldType, FieldFlag, CharacterSet
 from .custom_types import HexLiteral
 
 
@@ -73,10 +73,10 @@ class MySQLConverterBase(object):
                 value_count = len(list(value))
                 if value_count == 1:
                     for item in value:
-                        return  "("+str(item)+")"
+                        return "(" + str(item) + ")"
                 else:
                     value = value[:value_count]
-                    return  value
+                    return value
             return getattr(self, "_{0}_to_mysql".format(type_name))(value)
         except AttributeError:
             return value
@@ -154,10 +154,10 @@ class MySQLConverter(MySQLConverterBase):
                 value_count = len(list(value))
                 if value_count == 1:
                     for item in value:
-                        return  "("+str(item)+")"
+                        return "(" + str(item) + ")"
                 else:
                     value = value[:value_count]
-                    return  value
+                    return value
             value = value.replace('\\', '\\\\')
             value = value.replace('\n', '\\n')
             value = value.replace('\r', '\\r')
@@ -189,10 +189,10 @@ class MySQLConverter(MySQLConverterBase):
             buf_count = len(list(buf))
             if buf_count == 1:
                 for item in buf:
-                    return  ",".join(str(e) for e in list(item))
+                    return ",".join(str(e) for e in list(item))
             else:
                 value = buf[:buf_count]
-                return  ",".join(str(e) for e in list(value))
+                return ",".join(str(e) for e in list(value))
         else:
             return bytearray(b"'" + buf + b"'")
 
@@ -204,10 +204,10 @@ class MySQLConverter(MySQLConverterBase):
                 value_count = len(list(value))
                 if value_count == 1:
                     for item in value:
-                        return  "("+str(item)+")"
+                        return "(" + str(item) + ")"
                 else:
                     value = value[:value_count]
-                    return  value
+                    return value
             return getattr(self, "_{0}_to_mysql".format(type_name))(value)
         except AttributeError:
             raise TypeError("Python '{0}' cannot be converted to a "
@@ -415,7 +415,7 @@ class MySQLConverter(MySQLConverterBase):
         Returns a tuple.
         """
         i = 0
-        result = [None]*len(fields)
+        result = [None] * len(fields)
 
         if not self._cache_field_types:
             self._cache_field_types = {}

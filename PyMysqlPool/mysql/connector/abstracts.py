@@ -36,7 +36,6 @@ from .optionfiles import MySQLOptionsParser
 
 @make_abc(ABCMeta)
 class MySQLConnectionAbstract(object):
-
     """Abstract class for classes connecting to a MySQL server"""
 
     def __init__(self, **kwargs):
@@ -125,7 +124,7 @@ class MySQLConnectionAbstract(object):
                             # pylint: enable=W0104
 
                             if (option not in config_options or
-                                    config_options[option][1] <= value[1]):
+                                        config_options[option][1] <= value[1]):
                                 config_options[option] = value
                         except KeyError:
                             if group is 'connector_python':
@@ -562,7 +561,6 @@ class MySQLConnectionAbstract(object):
         self._raise_on_warnings = value
         self._get_warnings = value
 
-
     @property
     def unread_result(self):
         """Get whether there is an unread result
@@ -646,7 +644,7 @@ class MySQLConnectionAbstract(object):
                     "charset should be either integer, string or None")
         elif collation:
             (self._charset_id, charset_name, collation_name) = \
-                    CharacterSet.get_charset_info(collation=collation)
+                CharacterSet.get_charset_info(collation=collation)
 
         self._execute_query("SET NAMES '{0}' COLLATE '{1}'".format(
             charset_name, collation_name))
@@ -701,6 +699,7 @@ class MySQLConnectionAbstract(object):
     def disconnect(self):
         """Disconnect from the MySQL server"""
         pass
+
     close = disconnect
 
     def connect(self, **kwargs):
@@ -740,7 +739,7 @@ class MySQLConnectionAbstract(object):
                     break
             except Exception as err:  # pylint: disable=W0703
                 if counter == attempts:
-                    msg = "Can not reconnect to MySQL after {0} "\
+                    msg = "Can not reconnect to MySQL after {0} " \
                           "attempt(s): {1}".format(attempts, str(err))
                     raise errors.InterfaceError(msg)
             if delay > 0:
@@ -977,6 +976,7 @@ class MySQLCursorAbstract(object):
     Abstract class defining cursor class with method and members
     required by the Python Database API Specification v2.0.
     """
+
     def __init__(self):
         """Initialization"""
         self._description = None

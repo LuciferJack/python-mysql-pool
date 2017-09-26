@@ -53,10 +53,10 @@ class FuzzyPoolMySQLConverter(object):
                 value_count = len(list(value))
                 if value_count == 1:
                     for item in value:
-                        return  "("+str(item)+")"
+                        return "(" + str(item) + ")"
                 else:
                     value = value[:value_count]
-                    return  value
+                    return value
             return getattr(self, "_{0}_to_mysql".format(type_name))(value)
         except AttributeError:
             return value
@@ -134,10 +134,10 @@ class FuzzyMySQLConverter(PyMysqlPool.mysql.connector.conversion.MySQLConverter,
                 value_count = len(list(value))
                 if value_count == 1:
                     for item in value:
-                        return  "("+str(item)+")"
+                        return "(" + str(item) + ")"
                 else:
                     value = value[:value_count]
-                    return  value
+                    return value
             value = value.replace('\\', '\\\\')
             value = value.replace('\n', '\\n')
             value = value.replace('\r', '\\r')
@@ -169,10 +169,10 @@ class FuzzyMySQLConverter(PyMysqlPool.mysql.connector.conversion.MySQLConverter,
             buf_count = len(list(buf))
             if buf_count == 1:
                 for item in buf:
-                    return  ",".join(str(e) for e in list(item))
+                    return ",".join(str(e) for e in list(item))
             else:
                 value = buf[:buf_count]
-                return  ",".join(str(e) for e in list(value))
+                return ",".join(str(e) for e in list(value))
         else:
             return bytearray(b"'" + buf + b"'")
 
@@ -184,10 +184,10 @@ class FuzzyMySQLConverter(PyMysqlPool.mysql.connector.conversion.MySQLConverter,
                 value_count = len(list(value))
                 if value_count == 1:
                     for item in value:
-                        return  item
+                        return item
                 else:
                     value = value[:value_count]
-                    return  value
+                    return value
             return getattr(self, "_{0}_to_mysql".format(type_name))(value)
         except AttributeError:
             raise TypeError("Python '{0}' cannot be converted to a "
@@ -395,7 +395,7 @@ class FuzzyMySQLConverter(PyMysqlPool.mysql.connector.conversion.MySQLConverter,
         Returns a tuple.
         """
         i = 0
-        result = [None]*len(fields)
+        result = [None] * len(fields)
 
         if not self._cache_field_types:
             self._cache_field_types = {}
@@ -596,4 +596,3 @@ class FuzzyMySQLConverter(PyMysqlPool.mysql.connector.conversion.MySQLConverter,
     _LONG_BLOB_to_python = _BLOB_to_python
     _MEDIUM_BLOB_to_python = _BLOB_to_python
     _TINY_BLOB_to_python = _BLOB_to_python
-

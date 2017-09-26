@@ -23,9 +23,9 @@
 
 """Python v2 to v3 migration module"""
 
-from decimal import Decimal
 import struct
 import sys
+from decimal import Decimal
 
 from .custom_types import HexLiteral
 
@@ -63,7 +63,6 @@ def init_bytearray(payload=b'', encoding='utf-8'):
         except AttributeError:
             raise ValueError("payload must be a str or bytes")
 
-
     return bytearray(payload)
 
 
@@ -73,6 +72,7 @@ def isstr(obj):
         return isinstance(obj, basestring)
     else:
         return isinstance(obj, str)
+
 
 def isunicode(obj):
     """Returns whether a variable is a of unicode type"""
@@ -99,6 +99,7 @@ def make_abc(base_class):
     using the abc-module. The decorator makes it possible to do the
     same in both Python v2 and v3 code.
     """
+
     def wrapper(class_):
         """Wrapper"""
         attrs = class_.__dict__.copy()
@@ -111,4 +112,5 @@ def make_abc(base_class):
         else:
             bases = (class_,) + bases
         return base_class(class_.__name__, bases, attrs)
+
     return wrapper

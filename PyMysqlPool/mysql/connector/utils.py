@@ -32,6 +32,7 @@ import struct
 
 from .catch23 import struct_unpack
 
+
 def intread(buf):
     """Unpacks the given buffer to an integer"""
     try:
@@ -41,10 +42,10 @@ def intread(buf):
         if length == 1:
             return buf[0]
         elif length <= 4:
-            tmp = buf + b'\x00'*(4-length)
+            tmp = buf + b'\x00' * (4 - length)
             return struct_unpack('<I', tmp)[0]
         else:
-            tmp = buf + b'\x00'*(8-length)
+            tmp = buf + b'\x00' * (8 - length)
             return struct_unpack('<Q', tmp)[0]
     except:
         raise
@@ -325,6 +326,7 @@ def _digest_buffer(buf):
     if not isinstance(buf, str):
         return ''.join(["\\x%02x" % c for c in buf])
     return ''.join(["\\x%02x" % ord(c) for c in buf])
+
 
 def print_buffer(abuffer, prefix=None, limit=30):
     """Debug function printing output of _digest_buffer()"""

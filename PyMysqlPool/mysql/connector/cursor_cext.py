@@ -42,7 +42,6 @@ from .errorcode import CR_NO_RESULT_SET
 
 
 class _ParamSubstitutor(object):
-
     """
     Substitutes parameters into SQL statement.
     """
@@ -67,7 +66,6 @@ class _ParamSubstitutor(object):
 
 
 class CMySQLCursor(MySQLCursorAbstract):
-
     """Default cursor for interacting with MySQL using C Extension"""
 
     _raw = False
@@ -266,6 +264,7 @@ class CMySQLCursor(MySQLCursorAbstract):
 
     def _batch_insert(self, operation, seq_params):
         """Implements multi row insert"""
+
         def remove_comments(match):
             """Remove comments from INSERT statements.
 
@@ -317,7 +316,6 @@ class CMySQLCursor(MySQLCursorAbstract):
         except Exception as err:
             raise errors.InterfaceError(
                 "Failed executing the operation; %s" % err)
-
 
     def executemany(self, operation, seq_params):
         """Execute the given operation multiple times"""
@@ -626,7 +624,6 @@ class CMySQLCursor(MySQLCursorAbstract):
 
 
 class CMySQLCursorBuffered(CMySQLCursor):
-
     """Cursor using C Extension buffering results"""
 
     def __init__(self, connection):
@@ -688,21 +685,18 @@ class CMySQLCursorBuffered(CMySQLCursor):
 
 
 class CMySQLCursorRaw(CMySQLCursor):
-
     """Cursor using C Extension return raw results"""
 
     _raw = True
 
 
 class CMySQLCursorBufferedRaw(CMySQLCursorBuffered):
-
     """Cursor using C Extension buffering raw results"""
 
     _raw = True
 
 
 class CMySQLCursorDict(CMySQLCursor):
-
     """Cursor using C Extension returning rows as dictionaries"""
 
     _raw = False
@@ -728,7 +722,6 @@ class CMySQLCursorDict(CMySQLCursor):
 
 
 class CMySQLCursorBufferedDict(CMySQLCursorBuffered):
-
     """Cursor using C Extension buffering and returning rows as dictionaries"""
 
     _raw = False
@@ -746,7 +739,6 @@ class CMySQLCursorBufferedDict(CMySQLCursorBuffered):
 
 
 class CMySQLCursorNamedTuple(CMySQLCursor):
-
     """Cursor using C Extension returning rows as named tuples"""
 
     def _handle_resultset(self):
@@ -777,7 +769,6 @@ class CMySQLCursorNamedTuple(CMySQLCursor):
 
 
 class CMySQLCursorBufferedNamedTuple(CMySQLCursorBuffered):
-
     """Cursor using C Extension buffering and returning rows as named tuples"""
 
     def _handle_resultset(self):
@@ -799,7 +790,6 @@ class CMySQLCursorBufferedNamedTuple(CMySQLCursorBuffered):
 
 
 class CMySQLCursorPrepared(CMySQLCursor):
-
     """Cursor using Prepare Statement
     """
 
@@ -807,4 +797,3 @@ class CMySQLCursorPrepared(CMySQLCursor):
         super(CMySQLCursorPrepared, self).__init__(connection)
         raise NotImplementedError(
             "Alternative: Use connection.MySQLCursorPrepared")
-

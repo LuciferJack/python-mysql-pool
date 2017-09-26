@@ -283,4 +283,3 @@ MYSQL_CHARACTER_SETS = [
     ("gb18030", "gb18030_bin", False),  # 249
     ("gb18030", "gb18030_unicode_520_ci", False),  # 250
 ]
-

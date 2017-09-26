@@ -10,12 +10,12 @@ example_config = {
         'user': "root", 'passwd': "******",
         'db': "marry", 'charset': "utf8",
         'pool': {
-            #use = 0 no pool else use pool
-            "use":1,
+            # use = 0 no pool else use pool
+            "use": 1,
             # size is >=0,  0 is dynamic pool
-            "size":10,
-            #pool name
-            "name":"local",
+            "size": 10,
+            # pool name
+            "name": "local",
         }
     },
     'poi': {
@@ -23,12 +23,12 @@ example_config = {
         'user': "lujunxu", 'passwd': "****",
         'db': "poi_relation", 'charset': "utf8",
         'pool': {
-            #use = 0 no pool else use pool
-            "use":0,
+            # use = 0 no pool else use pool
+            "use": 0,
             # size is >=0,  0 is dynamic pool
-            "size":0,
-            #pool name
-            "name":"poi",
+            "size": 0,
+            # pool name
+            "name": "poi",
         }
     },
 }

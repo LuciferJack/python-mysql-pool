@@ -43,7 +43,7 @@ RE_SQL_INSERT_STMT = re.compile(
     r"({0}|\s)*INSERT({0}|\s)*INTO.+VALUES.*".format(SQL_COMMENT),
     re.I | re.M | re.S)
 RE_SQL_INSERT_VALUES = re.compile(r'.*VALUES\s*(\(.*\)).*', re.I | re.M | re.S)
-#RE_PY_PARAM = re.compile(b'%s')
+# RE_PY_PARAM = re.compile(b'%s')
 RE_PY_PARAM = re.compile(b'(%s)')
 RE_PY_MAPPING_PARAM = re.compile(
     br'''
@@ -65,6 +65,7 @@ class _ParamSubstitutor(object):
     """
     Substitutes parameters into SQL statement.
     """
+
     def __init__(self, params):
         self.params = params
         self.index = 0
@@ -96,6 +97,7 @@ def _bytestr_format_dict(bytestr, value_dict):
     ...                      {b'x': b'x=%(y)s', b'y': b'y=%(x)s'})
     b'x=%(y)s y=%(x)s'
     """
+
     def replace(matchobj):
         value = None
         groups = matchobj.groupdict()
@@ -103,14 +105,16 @@ def _bytestr_format_dict(bytestr, value_dict):
             value = b"%"
         if groups["conversion_type"] == b"s":
             key = groups["mapping_key"].encode("utf-8") \
-                  if PY2 else groups["mapping_key"]
+                if PY2 else groups["mapping_key"]
             value = value_dict[key]
         if value is None:
             raise ValueError("Unsupported conversion_type: {0}"
                              "".format(groups["conversion_type"]))
         return value.decode("utf-8") if PY2 else value
+
     return RE_PY_MAPPING_PARAM.sub(replace, bytestr.decode("utf-8")
-                                   if PY2 else bytestr)
+    if PY2 else bytestr)
+
 
 class CursorBase(MySQLCursorAbstract):
     """
@@ -305,6 +309,7 @@ class MySQLCursor(CursorBase):
 
     Implements the Python Database API Specification v2.0 (PEP-249)
     """
+
     def __init__(self, connection=None):
         CursorBase.__init__(self)
         self._connection = None
@@ -559,6 +564,7 @@ class MySQLCursor(CursorBase):
 
     def _batch_insert(self, operation, seq_params):
         """Implements multi row insert"""
+
         def remove_comments(match):
             """Remove comments from INSERT statements.
 
@@ -596,8 +602,8 @@ class MySQLCursor(CursorBase):
                     if psub.remaining != 0:
                         raise errors.ProgrammingError(
                             "Not all parameters were used in the SQL statement")
-                    #for p in self._process_params(params):
-                    #    tmp = tmp.replace(b'%s',p,1)
+                        # for p in self._process_params(params):
+                        #    tmp = tmp.replace(b'%s',p,1)
                 values.append(tmp)
             if fmt in stmt:
                 stmt = stmt.replace(fmt, b','.join(values), 1)
@@ -760,7 +766,7 @@ class MySQLCursor(CursorBase):
                 if 'columns' in result:
                     results.append(tmp)
             self._connection._consume_results = can_consume_results
-            #pylint: enable=W0212
+            # pylint: enable=W0212
 
             if argnames:
                 select = "SELECT {0}".format(','.join(argtypes))
@@ -1064,6 +1070,7 @@ class MySQLCursorBufferedRaw(MySQLCursorBuffered):
 class MySQLCursorPrepared(MySQLCursor):
     """Cursor using MySQL Prepared Statements
     """
+
     def __init__(self, connection=None):
         super(MySQLCursorPrepared, self).__init__(connection)
         self._rows = None
@@ -1223,6 +1230,7 @@ class MySQLCursorDict(MySQLCursor):
             "col2": value2
         }
     """
+
     def _row_to_python(self, rowdata, desc=None):
         """Convert a MySQL text result row to Python types
 
@@ -1272,6 +1280,7 @@ class MySQLCursorNamedTuple(MySQLCursor):
     Each row is returned as a namedtuple and the values can be accessed as:
     row.col1, row.col2
     """
+
     def _row_to_python(self, rowdata, desc=None):
         """Convert a MySQL text result row to Python types
 
@@ -1323,6 +1332,7 @@ class MySQLCursorBufferedDict(MySQLCursorDict, MySQLCursorBuffered):
     """
     Buffered Cursor fetching rows as dictionaries.
     """
+
     def fetchone(self):
         """Returns next row of a query result set
         """
@@ -1348,6 +1358,7 @@ class MySQLCursorBufferedNamedTuple(MySQLCursorNamedTuple, MySQLCursorBuffered):
     """
     Buffered Cursor fetching rows as named tuple.
     """
+
     def fetchone(self):
         """Returns next row of a query result set
         """

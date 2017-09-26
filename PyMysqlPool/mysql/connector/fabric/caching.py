@@ -23,12 +23,11 @@
 
 """Implementing caching mechanisms for MySQL Fabric"""
 
-
 import bisect
-from datetime import datetime, timedelta
-from hashlib import sha1
 import logging
 import threading
+from datetime import datetime, timedelta
+from hashlib import sha1
 
 from . import FabricShard
 
@@ -57,7 +56,6 @@ def insort_right_rev(alist, new_element, low=0, high=None):
 
 
 class CacheEntry(object):
-
     """Base class for MySQL Fabric cache entries"""
 
     def __init__(self, version=None, fabric_uuid=None, ttl=_CACHE_TTL):
@@ -94,7 +92,6 @@ class CacheEntry(object):
 
 
 class CacheShardTable(CacheEntry):
-
     """Cache entry for a Fabric sharded table"""
 
     def __init__(self, shard, version=None, fabric_uuid=None):
@@ -159,6 +156,7 @@ class CacheShardTable(CacheEntry):
 
 class CacheGroup(CacheEntry):
     """Cache entry for a Fabric group"""
+
     def __init__(self, group_name, servers):
         super(CacheGroup, self).__init__(version=None, fabric_uuid=None)
         self.group_name = group_name
@@ -175,11 +173,13 @@ class CacheGroup(CacheEntry):
             group=self.group_name,
         )
 
+
 class FabricCache(object):
     """Singleton class for caching Fabric data
 
     Only one instance of this class can exists globally.
     """
+
     def __init__(self, ttl=_CACHE_TTL):
         self._ttl = ttl
         self._sharding = {}

@@ -23,21 +23,20 @@
 
 """MySQL Fabric support"""
 
-
 from collections import namedtuple
 
 # Order of field_names must match how Fabric is returning the data
 FabricMySQLServer = namedtuple(
     'FabricMySQLServer',
     ['uuid', 'group', 'host', 'port', 'mode', 'status', 'weight']
-    )
+)
 
 # Order of field_names must match how Fabric is returning the data
 FabricShard = namedtuple(
     'FabricShard',
     ['database', 'table', 'column', 'key',
      'shard', 'shard_type', 'group', 'global_group']
-    )
+)
 
 from .connection import (
     MODE_READONLY, MODE_READWRITE,
@@ -52,6 +51,7 @@ from .connection import (
 def connect(**kwargs):
     """Create a MySQLFabricConnection object"""
     return MySQLFabricConnection(**kwargs)
+
 
 __all__ = [
     'MODE_READWRITE',

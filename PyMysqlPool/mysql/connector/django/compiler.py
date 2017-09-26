@@ -3,11 +3,14 @@
 
 import django
 from django.db.models.sql import compiler
+
 try:
     from itertools import zip_longest as zip_longest
 except:
     from itertools import izip_longest as zip_longest
-#from django.utils.six.moves import zip_longest
+
+
+# from django.utils.six.moves import zip_longest
 
 
 class SQLCompiler(compiler.SQLCompiler):
@@ -17,7 +20,7 @@ class SQLCompiler(compiler.SQLCompiler):
         bool_fields = ("BooleanField", "NullBooleanField")
         for value, field in zip_longest(row[index_extra_select:], fields):
             if (field and field.get_internal_type() in bool_fields and
-                    value in (0, 1)):
+                        value in (0, 1)):
                 value = bool(value)
             values.append(value)
         return row[:index_extra_select] + tuple(values)
@@ -53,9 +56,11 @@ class SQLUpdateCompiler(compiler.SQLUpdateCompiler, SQLCompiler):
 class SQLAggregateCompiler(compiler.SQLAggregateCompiler, SQLCompiler):
     pass
 
+
 if django.VERSION < (1, 8):
     class SQLDateCompiler(compiler.SQLDateCompiler, SQLCompiler):
         pass
+
 
     if django.VERSION >= (1, 6):
         class SQLDateTimeCompiler(compiler.SQLDateTimeCompiler, SQLCompiler):

@@ -3,6 +3,7 @@
 # coding=utf-8
 import sys
 from time import sleep
+
 from PyMysqlPool.db_util.mysql_pool import get_pool_connection
 from PyMysqlPool.mysql.connector.dpooling import PooledMySQLConnection
 from PyMysqlPool.util.log_util import get_caller_info_total, get_caller_function
@@ -36,13 +37,14 @@ def query(_db_config, _sql, _args):
         conn.close()
     return result
 
+
 # ===============================================
 # FUNCTION not use pool
 # ===============================================
 def query_single(_db_config, _sql, _args):
     config = _db_config
     conn = MySQLdb.connect(host=config['host'], port=config['port'], user=config['user'], passwd=config['passwd'],
-                          db=config['db'], charset=config['charset'], use_unicode=True)
+                           db=config['db'], charset=config['charset'], use_unicode=True)
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     result = ()
     try:
@@ -56,6 +58,7 @@ def query_single(_db_config, _sql, _args):
         cursor.close()
         conn.close()
     return result
+
 
 # ===============================================
 # FUNCTION  更新或者删除
@@ -93,7 +96,7 @@ def emptyTable(_db_config, _sql, _args):
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     else:
         cursor = conn.cursor(buffered=True)
-    #conn.autocommit(True) #replace False -> True
+    # conn.autocommit(True) #replace False -> True
     try:
         cursor.execute(_sql, _args)
         conn.commit()
@@ -108,6 +111,7 @@ def emptyTable(_db_config, _sql, _args):
         cursor.close()
         conn.close()
     return result
+
 
 # ===============================================
 # FUNCTION  批量更新或者删除
@@ -129,6 +133,8 @@ c.executemany("insert into T (F1,F2) values (%s, %s)",
     [('a','b'),('c','d')])
 
 """
+
+
 def insertOrUpdatePatch(_db_config, _sql, _args):
     result = 0
     conn = get_pool_connection(_db_config)
@@ -136,7 +142,7 @@ def insertOrUpdatePatch(_db_config, _sql, _args):
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     else:
         cursor = conn.cursor(buffered=True)
-    #conn.autocommit(True) #replace False -> True
+    # conn.autocommit(True) #replace False -> True
     try:
         cursor.executemany(_sql, _args)
         conn.commit()
@@ -152,6 +158,7 @@ def insertOrUpdatePatch(_db_config, _sql, _args):
         conn.close()
     return result
 
+
 # ===============================================
 # FUNCTION  更新或者删除
 # ===============================================
@@ -160,10 +167,10 @@ def insertOrUpdate_getId(_db_config, _sql, _args):
     id = 0
     config = _db_config
     conn = MySQLdb.connect(host=config['host'], port=config['port'], user=config['user'], passwd=config['passwd'],
-                       db=config['db'], charset=config['charset'], use_unicode=True)
-    #conn = get_pool_connection(_db_config)
+                           db=config['db'], charset=config['charset'], use_unicode=True)
+    # conn = get_pool_connection(_db_config)
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
-    #conn.autocommit(True) #replace False -> True
+    # conn.autocommit(True) #replace False -> True
     try:
         cursor.execute(_sql, _args)
         id = conn.insert_id()
@@ -181,7 +188,6 @@ def insertOrUpdate_getId(_db_config, _sql, _args):
     return result, id
 
 
-
 def try_for_threes(_db_config, _sql, _args):
     caller = get_caller_function()
     for i in xrange(0, 3, 1):
@@ -196,9 +202,9 @@ def check_record_exsit(_db_config, _sql, _args):
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     else:
         cursor = conn.cursor(buffered=True)
-    #conn.autocommit(True) #replace False -> True
+    # conn.autocommit(True) #replace False -> True
     try:
-        cursor.execute(_sql, _args)         #conn.commit()
+        cursor.execute(_sql, _args)  # conn.commit()
         result = cursor.rowcount
     except:
         pass

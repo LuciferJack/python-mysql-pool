@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 # coding=utf-8
 import logging
-from threading import Thread
 import sys
+from threading import Thread
+
 from PyMysqlPool.example.example_case import d_query
 
 
 def doPoiWork():
     d_query()
 
+
 def thread_case(concurrent):
     for i in range(concurrent):
-        t = Thread(target=doPoiWork,args=())
+        t = Thread(target=doPoiWork, args=())
         t.daemon = True
         t.start()
 

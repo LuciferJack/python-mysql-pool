@@ -17,6 +17,7 @@ if django.VERSION >= (1, 6):
     if django.VERSION < (1, 8):
         from django.db.backends import FieldInfo
     from django.utils.encoding import force_text
+
     if django.VERSION >= (1, 7):
         from django.utils.datastructures import OrderedSet
 
@@ -58,7 +59,7 @@ class DatabaseIntrospection(BaseDatabaseIntrospection):
         field_type = super(DatabaseIntrospection, self).get_field_type(
             data_type, description)
         if (field_type == 'IntegerField'
-                and 'auto_increment' in description.extra):
+            and 'auto_increment' in description.extra):
             return 'AutoField'
         return field_type
 
@@ -69,7 +70,7 @@ class DatabaseIntrospection(BaseDatabaseIntrospection):
             return [
                 TableInfo(row[0], {'BASE TABLE': 't', 'VIEW': 'v'}.get(row[1]))
                 for row in cursor.fetchall()
-            ]
+                ]
         else:
             return [row[0] for row in cursor.fetchall()]
 
@@ -158,7 +159,7 @@ class DatabaseIntrospection(BaseDatabaseIntrospection):
                 return [
                     line[:3] + (length_map.get(line[0], line[3]),) + line[4:]
                     for line in cursor.description
-                ]
+                    ]
 
     def _name_to_index(self, cursor, table_name):
         """
@@ -166,7 +167,7 @@ class DatabaseIntrospection(BaseDatabaseIntrospection):
         Indexes are 0-based.
         """
         return dict((d[0], i) for i, d in enumerate(
-                    self.get_table_description(cursor, table_name)))
+            self.get_table_description(cursor, table_name)))
 
     def get_relations(self, cursor, table_name):
         """

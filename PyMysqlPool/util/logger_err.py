@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#coding=utf-8
+# coding=utf-8
 import logging
 import sys
 
@@ -11,9 +11,8 @@ logging.basicConfig(level=logging.NOTSET,
                     datefmt='%Y-%m-%d %H:%M:%S',
                     stream=sys.stdout)
 
-
-
-logFormatter = logging.Formatter('[%(asctime)s][%(levelname)7s][%(threadName)s][%(filename)s:%(funcName)s:%(lineno)d] %(message)s')
+logFormatter = logging.Formatter(
+    '[%(asctime)s][%(levelname)7s][%(threadName)s][%(filename)s:%(funcName)s:%(lineno)d] %(message)s')
 rootLogger = logging.getLogger(__name__)
 rootLogger.setLevel(logging.ERROR)
 # create console handler and set level to debug

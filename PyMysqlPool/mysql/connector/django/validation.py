@@ -50,9 +50,9 @@ class DatabaseValidation(BaseDatabaseValidation):
                     return errors
 
                 if (field_type.startswith('varchar')  # Look for CharFields...
-                        and field.unique  # ... that are unique
-                        and (field.max_length is None or
-                                     int(field.max_length) > 255)):
+                    and field.unique  # ... that are unique
+                    and (field.max_length is None or
+                                 int(field.max_length) > 255)):
                     errors.append(
                         checks.Error(
                             ('MySQL does not allow unique CharFields to have a '
@@ -61,5 +61,5 @@ class DatabaseValidation(BaseDatabaseValidation):
                             obj=field,
                             id='mysql.E001',
                         )
-                )
+                    )
             return errors

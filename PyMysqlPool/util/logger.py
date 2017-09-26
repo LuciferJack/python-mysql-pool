@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#coding=utf-8
+# coding=utf-8
 import logging
 import sys
 
@@ -16,5 +16,5 @@ ch = logging.StreamHandler(stream=sys.stdout)
 ch.setLevel(logging.INFO)
 # add ch to logger
 logger.addHandler(ch)
-#disable all
-#logger.propagate = False
+# disable all
+# logger.propagate = False

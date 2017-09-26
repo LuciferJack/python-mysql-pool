@@ -93,8 +93,8 @@ class MySQLProtocol(object):
             username_bytes = username
         packet = struct.pack('<IIB{filler}{usrlen}sx'.format(
             filler='x' * 23, usrlen=len(username_bytes)),
-                             client_flags, max_allowed_packet, charset,
-                             username_bytes)
+            client_flags, max_allowed_packet, charset,
+            username_bytes)
 
         packet += self._auth_response(client_flags, username, password,
                                       database,
@@ -173,7 +173,7 @@ class MySQLProtocol(object):
          res['server_status'],
          capabilities2,
          auth_data_length
-        ) = struct_unpack('<I8sx2sBH2sBxxxxxxxxxx', packet[0:31])
+         ) = struct_unpack('<I8sx2sBH2sBxxxxxxxxxx', packet[0:31])
         res['server_version_original'] = res['server_version_original'].decode()
 
         packet = packet[31:]
@@ -189,7 +189,7 @@ class MySQLProtocol(object):
 
         if capabilities & ClientFlag.PLUGIN_AUTH:
             if (b'\x00' not in packet
-                    and res['server_version_original'].startswith("5.5.8")):
+                and res['server_version_original'].startswith("5.5.8")):
                 # MySQL server 5.5.8 has a bug where end byte is not send
                 (packet, res['auth_plugin']) = (b'', packet)
             else:
@@ -429,7 +429,7 @@ class MySQLProtocol(object):
 
         values = []
         for pos, field in enumerate(fields):
-            if null_bitmap[int((pos+2)/8)] & (1 << (pos + 2) % 8):
+            if null_bitmap[int((pos + 2) / 8)] & (1 << (pos + 2) % 8):
                 values.append(None)
                 continue
             elif field[1] in (FieldType.TINY, FieldType.SHORT,

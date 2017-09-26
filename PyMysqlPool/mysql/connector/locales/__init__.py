@@ -30,6 +30,7 @@ __all__ = [
 
 from .. import errorcode
 
+
 def get_client_error(error, language='eng'):
     """Lookup client error
 
@@ -68,4 +69,3 @@ def get_client_error(error, language='eng'):
             return None
 
     raise ValueError("error argument needs to be either an integer or string")
-

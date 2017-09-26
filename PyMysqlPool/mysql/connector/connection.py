@@ -49,6 +49,7 @@ from .utils import int4store
 
 class MySQLConnection(MySQLConnectionAbstract):
     """Connection to a MySQL Server"""
+
     def __init__(self, *args, **kwargs):
         self._protocol = None
         self._socket = None
@@ -233,6 +234,7 @@ class MySQLConnection(MySQLConnectionAbstract):
             self._socket.close_connection()
         except (AttributeError, errors.Error):
             pass  # Getting an exception would mean we are disconnected.
+
     disconnect = close
 
     def _send_cmd(self, command, argument=None, packet_number=0, packet=None,
@@ -398,7 +400,7 @@ class MySQLConnection(MySQLConnectionAbstract):
         if not column_count or not isinstance(column_count, int):
             raise errors.InterfaceError('Illegal result set.')
 
-        columns = [None,] * column_count
+        columns = [None, ] * column_count
         for i in range(0, column_count):
             columns[i] = self._protocol.parse_column(
                 self._socket.recv(), self.python_charset)
@@ -445,7 +447,7 @@ class MySQLConnection(MySQLConnectionAbstract):
             raise err
 
         if rows[-1] is not None:
-            ek = rows[-1] # OK or EOF
+            ek = rows[-1]  # OK or EOF
             self._handle_server_status(ek['status_flag'] if 'status_flag' in ek else ek['server_status'])
             self.unread_result = False
 
@@ -744,7 +746,7 @@ class MySQLConnection(MySQLConnectionAbstract):
                     break
             except Exception as err:  # pylint: disable=W0703
                 if counter == attempts:
-                    msg = "Can not reconnect to MySQL after {0} "\
+                    msg = "Can not reconnect to MySQL after {0} " \
                           "attempt(s): {1}".format(attempts, str(err))
                     raise errors.InterfaceError(msg)
             if delay > 0:

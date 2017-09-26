@@ -3,6 +3,7 @@
 # New file added for Django 1.8
 
 import django
+
 if django.VERSION >= (1, 8):
     from django.db.backends.base.features import BaseDatabaseFeatures
 else:
@@ -12,6 +13,7 @@ from django.utils import six
 
 try:
     import pytz
+
     HAVE_PYTZ = True
 except ImportError:
     HAVE_PYTZ = False

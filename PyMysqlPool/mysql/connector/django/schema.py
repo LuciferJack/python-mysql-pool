@@ -3,6 +3,7 @@
 # New file added for Django 1.7
 
 import django
+
 if django.VERSION >= (1, 8):
     from django.db.backends.base.schema import BaseDatabaseSchemaEditor
 else:
@@ -11,7 +12,6 @@ from django.db.models import NOT_PROVIDED
 
 
 class DatabaseSchemaEditor(BaseDatabaseSchemaEditor):
-
     sql_rename_table = "RENAME TABLE %(old_table)s TO %(new_table)s"
 
     sql_alter_column_null = "MODIFY %(column)s %(type)s NULL"
@@ -52,7 +52,7 @@ class DatabaseSchemaEditor(BaseDatabaseSchemaEditor):
 
         # Simulate the effect of a one-off default.
         if (self.skip_default(field)
-                and field.default not in (None, NOT_PROVIDED)):
+            and field.default not in (None, NOT_PROVIDED)):
             effective_default = self.effective_default(field)
             self.execute('UPDATE %(table)s SET %(column)s = %%s' % {
                 'table': self.quote_name(model._meta.db_table),
@@ -67,7 +67,7 @@ class DatabaseSchemaEditor(BaseDatabaseSchemaEditor):
         if storage == "InnoDB":
             for field in model._meta.local_fields:
                 if (field.db_index and not field.unique
-                        and field.get_internal_type() == "ForeignKey"):
+                    and field.get_internal_type() == "ForeignKey"):
                     # Temporary setting db_index to False (in memory) to
                     # disable index creation for FKs (index automatically
                     # created by MySQL)

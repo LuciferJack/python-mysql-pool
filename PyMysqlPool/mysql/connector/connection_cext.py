@@ -25,7 +25,7 @@
 """
 
 # Detection of abstract methods in pylint is not working correctly
-#pylint: disable=W0223
+# pylint: disable=W0223
 
 from . import errors
 from .abstracts import MySQLConnectionAbstract, MySQLCursorAbstract
@@ -52,10 +52,11 @@ except ImportError as exc:
         ))
 else:
     HAVE_CMYSQL = True
+
+
 # pylint: enable=F0401,C0413
 
 class CMySQLConnection(MySQLConnectionAbstract):
-
     """Class initiating a MySQL Connection using Connector/C"""
 
     def __init__(self, **kwargs):
@@ -183,6 +184,7 @@ class CMySQLConnection(MySQLConnectionAbstract):
                 raise errors.get_mysql_exception(msg=exc.msg, errno=exc.errno,
                                                  sqlstate=exc.sqlstate)
             self._cmysql = None
+
     disconnect = close
 
     def is_connected(self):
@@ -387,6 +389,7 @@ class CMySQLConnection(MySQLConnectionAbstract):
             return self.fetch_eof_status()
 
         return self.fetch_eof_columns()
+
     _execute_query = cmd_query
 
     def cursor(self, buffered=None, raw=None, prepared=None, cursor_class=None,

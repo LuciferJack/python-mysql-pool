@@ -20,11 +20,11 @@ import sys
 import warnings
 from datetime import datetime
 
-from PyMysqlPool.mysql.connector import errors
-
-import PyMysqlPool
 import django
 from django.utils.functional import cached_property
+
+import PyMysqlPool
+from PyMysqlPool.mysql.connector import errors
 
 try:
     from PyMysqlPool import mysql
@@ -32,6 +32,7 @@ try:
     from PyMysqlPool.mysql.connector.catch23 import PY2
 except ImportError as err:
     from django.core.exceptions import ImproperlyConfigured
+
     raise ImproperlyConfigured(
         "Error loading mysql.connector module: {0}".format(err))
 
@@ -39,6 +40,7 @@ try:
     version = PyMysqlPool.mysql.connector.__version_info__[0:3]
 except AttributeError:
     from PyMysqlPool.mysql.connector.version import VERSION
+
     version = VERSION[0:3]
 
 try:
@@ -50,11 +52,13 @@ else:
 
 if version < (1, 1):
     from django.core.exceptions import ImproperlyConfigured
+
     raise ImproperlyConfigured(
         "MySQL Connector/Python v1.1.0 or newer "
         "is required; you have %s" % PyMysqlPool.mysql.connector.__version__)
 
 from django.db import utils
+
 if django.VERSION < (1, 7):
     pass
 else:
@@ -74,9 +78,9 @@ from PyMysqlPool.mysql.connector.django.introspection import DatabaseIntrospecti
 from PyMysqlPool.mysql.connector.django.validation import DatabaseValidation
 from PyMysqlPool.mysql.connector.django.features import DatabaseFeatures
 from PyMysqlPool.mysql.connector.django.operations import DatabaseOperations
+
 if django.VERSION >= (1, 7):
     from PyMysqlPool.mysql.connector.django.schema import DatabaseSchemaEditor
-
 
 DatabaseError = PyMysqlPool.mysql.connector.DatabaseError
 IntegrityError = PyMysqlPool.mysql.connector.IntegrityError
@@ -101,6 +105,7 @@ def adapt_datetime_with_timezone_support(value):
 
 class DjangoMySQLConverter(MySQLConverter):
     """Custom converter for Django for MySQLConnection"""
+
     def _TIME_to_python(self, value, dsc=None):
         """Return MySQL TIME data type as datetime.time()
 
@@ -138,6 +143,7 @@ class DjangoMySQLConverter(MySQLConverter):
 
 class DjangoCMySQLConverter(MySQLConverterBase):
     """Custom converter for Django for CMySQLConnection"""
+
     def _TIME_to_python(self, value, dsc=None):
         """Return MySQL TIME data type as datetime.time()
 

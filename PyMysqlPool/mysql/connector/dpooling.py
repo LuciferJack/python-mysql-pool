@@ -26,7 +26,7 @@
 
 import re
 from uuid import uuid4
-# pylint: disable=F0401
+
 from PyMysqlPool.util.py_net_util import get_ip_address
 
 try:
@@ -85,6 +85,7 @@ class PooledMySQLConnection(object):
     method set_config(). Using config() on pooled connection will raise a
     PoolError.
     """
+
     def __init__(self, pool, cnx):
         """Initialize
 
@@ -136,6 +137,7 @@ class PooledMySQLConnection(object):
 
 class MySQLConnectionPool(object):
     """Class defining a pool of MySQL connections"""
+
     def __init__(self, pool_size=0, pool_name=None, pool_reset_session=True,
                  **kwargs):
         """Initialize
@@ -212,10 +214,10 @@ class MySQLConnectionPool(object):
         Raises an AttributeError when the pool_size is not valid. Invalid size
         is 0, negative or higher than pooling.CNX_POOL_MAXSIZE.
         """
-        if pool_size < 0 :
+        if pool_size < 0:
             raise AttributeError(
                 "Pool size should be higher than or equal 0 and ")
-                #"lower or equal to {0}".format(CNX_POOL_MAXSIZE))
+            # "lower or equal to {0}".format(CNX_POOL_MAXSIZE))
         self._pool_size = pool_size
 
     def _reset_pool_size(self, pool_size):
@@ -226,10 +228,10 @@ class MySQLConnectionPool(object):
         Raises an AttributeError when the pool_size is not valid. Invalid size
         is 0, negative or higher than pooling.CNX_POOL_MAXSIZE.
         """
-        if pool_size < 0 :
+        if pool_size < 0:
             raise AttributeError(
                 "Pool size should be higher than or equal 0 and ")
-            #"lower or equal to {0}".format(CNX_POOL_MAXSIZE))
+            # "lower or equal to {0}".format(CNX_POOL_MAXSIZE))
             self._pool_size = pool_size
 
     def _set_init_size(self, pool_size):
@@ -240,10 +242,10 @@ class MySQLConnectionPool(object):
         Raises an AttributeError when the pool_size is not valid. Invalid size
         is 0, negative or higher than pooling.CNX_POOL_MAXSIZE.
         """
-        if pool_size < 0 :
+        if pool_size < 0:
             raise AttributeError(
                 "Pool size should be higher than or equal 0 and ")
-            #"lower or equal to {0}".format(CNX_POOL_MAXSIZE))
+            # "lower or equal to {0}".format(CNX_POOL_MAXSIZE))
         self._init_size = pool_size
         if self._init_size == 0:
             self._init_size = 5
@@ -257,17 +259,16 @@ class MySQLConnectionPool(object):
         Raises an AttributeError when the pool_size is not valid. Invalid size
         is 0, negative or higher than pooling.CNX_POOL_MAXSIZE.
         """
-        if pool_size < 0 :
+        if pool_size < 0:
             raise AttributeError(
                 "Pool size should be higher than or equal 0 and ")
-            #"lower or equal to {0}".format(CNX_POOL_MAXSIZE))
+            # "lower or equal to {0}".format(CNX_POOL_MAXSIZE))
         if self._dynamic_size == 0:
             calc_sizie = pool_size if pool_size else 5
-            conns = calc_sizie - int(round((calc_sizie/4.0)*3))
+            conns = calc_sizie - int(round((calc_sizie / 4.0) * 3))
             self._check_size = conns if conns else 1
         else:
             self._check_size = None
-
 
     def _set_pool_name(self, pool_name):
         r"""Set the name of the pool
@@ -329,7 +330,7 @@ class MySQLConnectionPool(object):
                 cnx = MySQLConnection(**self._cnx_config)
                 try:
                     if (self._reset_session and self._cnx_config['compress']
-                            and cnx.get_server_version() < (5, 7, 3)):
+                        and cnx.get_server_version() < (5, 7, 3)):
                         raise errors.NotSupportedError("Pool reset session is "
                                                        "not supported with "
                                                        "compression for MySQL "
@@ -392,8 +393,8 @@ class MySQLConnectionPool(object):
         size = self._cnx_queue.qsize()
         if size <= self._check_size:
             # double size
-            self._increase_size = 2*self._pool_size +1
-            #print  "before size is %s ,_increase_size is %s" % (self._pool_size,self._increase_size)
+            self._increase_size = 2 * self._pool_size + 1
+            # print  "before size is %s ,_increase_size is %s" % (self._pool_size,self._increase_size)
             while self._pool_size < self._increase_size:
                 self.add_connection()
                 self._pool_size += 1

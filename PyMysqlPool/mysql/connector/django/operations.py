@@ -8,6 +8,7 @@ import uuid
 
 import django
 from django.conf import settings
+
 if django.VERSION >= (1, 8):
     from django.db.backends.base.operations import BaseDatabaseOperations
 else:
@@ -31,7 +32,7 @@ class DatabaseOperations(BaseDatabaseOperations):
         integer_field_ranges = dict(BaseDatabaseOperations.integer_field_ranges,
                                     PositiveSmallIntegerField=(0, 4294967295),
                                     PositiveIntegerField=(
-                                        0, 18446744073709551615),)
+                                        0, 18446744073709551615), )
 
     def date_extract_sql(self, lookup_type, field_name):
         # http://dev.mysql.com/doc/mysql/en/date-and-time-functions.html
@@ -234,12 +235,12 @@ class DatabaseOperations(BaseDatabaseOperations):
             # Django 1.6
             # Again, no microseconds
             first, second = super(DatabaseOperations,
-                self).year_lookup_bounds_for_datetime_field(value)
+                                  self).year_lookup_bounds_for_datetime_field(value)
             if self.connection.mysql_version >= (5, 6, 4):
                 return [first.replace(microsecond=0), second]
             else:
                 return [first.replace(microsecond=0),
-                    second.replace(microsecond=0)]
+                        second.replace(microsecond=0)]
 
         def sequence_reset_by_name_sql(self, style, sequences):
             # Truncate already resets the AUTO_INCREMENT field from

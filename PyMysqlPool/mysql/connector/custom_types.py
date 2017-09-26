@@ -23,12 +23,10 @@
 
 """Custom Python types used by MySQL Connector/Python"""
 
-
 import sys
 
 
 class HexLiteral(str):
-
     """Class holding MySQL hex literals"""
 
     def __new__(cls, str_, charset='utf8'):

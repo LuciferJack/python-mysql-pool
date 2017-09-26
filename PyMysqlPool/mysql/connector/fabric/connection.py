@@ -34,7 +34,6 @@ from base64 import b16decode
 from bisect import bisect
 from hashlib import md5
 
-# pylint: disable=F0401,E0611
 import PyMysqlPool
 
 try:
@@ -85,7 +84,6 @@ RESET_CACHE_ON_ERROR = (
     errorcode.CR_SERVER_LOST,
     errorcode.ER_OPTION_PREVENTS_STATEMENT,
 )
-
 
 # Errors to be reported to Fabric
 REPORT_ERRORS = (
@@ -151,6 +149,7 @@ _LOGGER = logging.getLogger('myconnpy-fabric')
 class MySQLRPCProtocol(object):
     """Class using MySQL protocol to query Fabric.
     """
+
     def __init__(self, fabric, host, port, connect_attempts, connect_delay):
         self.converter = MySQLConverter()
         self.handler = FabricMySQLConnection(fabric, host, port,
@@ -243,6 +242,7 @@ class MySQLRPCProtocol(object):
 class XMLRPCProtocol(object):
     """Class using XML-RPC protocol to query Fabric.
     """
+
     def __init__(self, fabric, host, port, connect_attempts, connect_delay):
         self.handler = FabricXMLRPCConnection(fabric, host, port,
                                               connect_attempts, connect_delay)
@@ -278,6 +278,7 @@ class XMLRPCProtocol(object):
 class FabricMySQLResponse(object):
     """Class used to parse a response got from Fabric with MySQL protocol.
     """
+
     def __init__(self, data):
         info = data[0][0]
         (fabric_uuid_str, ttl, error) = (info['fabric_uuid'], info['ttl'],
@@ -294,6 +295,7 @@ class FabricMySQLSet(FabricMySQLResponse):
     """Iterator to navigate through the result set returned from Fabric
     with MySQL Protocol.
     """
+
     def __init__(self, data):
         """Initialize the FabricSet object.
         """
@@ -351,6 +353,7 @@ class FabricResponse(object):
 class FabricSet(FabricResponse):
     """Iterator to navigate through the result set returned from Fabric
     """
+
     def __init__(self, data):
         """Initialize the FabricSet object.
         """
@@ -456,7 +459,7 @@ if HAVE_SSL:
 
         """Class handling HTTPS connections"""
 
-        def __init__(self, ssl_config):  #pylint: disable=E1002
+        def __init__(self, ssl_config):  # pylint: disable=E1002
             """Initialize"""
             if PY2:
                 urllib2.HTTPSHandler.__init__(self)
@@ -478,12 +481,11 @@ if HAVE_SSL:
 
 
 class FabricTransport(Transport):
-
     """Custom XMLRPC Transport for Fabric"""
 
     user_agent = 'MySQL Connector Python/{0}'.format(version.VERSION_TEXT)
 
-    def __init__(self, username, password,  #pylint: disable=E1002
+    def __init__(self, username, password,  # pylint: disable=E1002
                  verbose=0, use_datetime=False, https_handler=None):
         """Initialize"""
         if PY2:
@@ -556,7 +558,6 @@ class FabricTransport(Transport):
 
 
 class Fabric(object):
-
     """Class managing MySQL Fabric instances"""
 
     def __init__(self, host, username=None, password=None,
@@ -1021,6 +1022,7 @@ class Fabric(object):
 class FabricConnection(object):
     """Base Class for a class holding a connection to a MySQL Fabric server
     """
+
     def __init__(self, fabric, host,
                  port=MYSQL_FABRIC_PORT[DEFAULT_FABRIC_PROTOCOL],
                  connect_attempts=_CNX_ATTEMPT_MAX,
@@ -1073,7 +1075,6 @@ class FabricConnection(object):
 
 
 class FabricXMLRPCConnection(FabricConnection):
-
     """Class holding a connection to a MySQL Fabric server through XML-RPC"""
 
     def __init__(self, fabric, host, port=MYSQL_FABRIC_PORT['xmlrpc'],
@@ -1167,6 +1168,7 @@ class FabricMySQLConnection(FabricConnection):
     """
     Class holding a connection to a MySQL Fabric server through MySQL protocol
     """
+
     def __init__(self, fabric, host, port=MYSQL_FABRIC_PORT['mysql'],
                  connect_attempts=_CNX_ATTEMPT_MAX,
                  connect_delay=_CNX_ATTEMPT_DELAY):
@@ -1245,7 +1247,6 @@ class FabricMySQLConnection(FabricConnection):
 
 
 class MySQLFabricConnection(object):
-
     """Connection to a MySQL server through MySQL Fabric"""
 
     def __init__(self, **kwargs):
@@ -1510,6 +1511,7 @@ class MySQLFabricConnection(object):
         finally:
             self._mysql_cnx = None
             self._fabric_mysql_server = None
+
     close = disconnect
 
     def cursor(self, buffered=None, raw=None, prepared=None, cursor_class=None):

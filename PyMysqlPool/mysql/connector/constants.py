@@ -24,8 +24,8 @@
 """Various MySQL constants and character sets
 """
 
-from .errors import ProgrammingError
 from .charsets import MYSQL_CHARACTER_SETS
+from .errors import ProgrammingError
 
 MAX_PACKET_LENGTH = 16777215
 NET_BUFFER_LENGTH = 8192
@@ -73,6 +73,7 @@ CNX_FABRIC_ARGS = ['fabric_host', 'fabric_username', 'fabric_password',
                    'fabric_connect_delay', 'fabric_report_errors',
                    'fabric_ssl_ca', 'fabric_ssl_key', 'fabric_ssl_cert',
                    'fabric_user']
+
 
 def flag_is_set(flag, flags):
     """Checks if the flag is set

@@ -50,6 +50,7 @@ from .optionfiles import read_option_files
 
 _CONNECTION_POOLS = {}
 
+
 def _get_pooled_connection(**kwargs):
     """Return a pooled MySQL connection"""
     # If no pool name specified, generate one
@@ -179,6 +180,8 @@ def connect(*args, **kwargs):
         return CMySQLConnection(*args, **kwargs)
     else:
         return MySQLConnection(*args, **kwargs)
+
+
 Connect = connect  # pylint: disable=C0103
 
 __version_info__ = version.VERSION
@@ -206,4 +209,4 @@ __all__ = [
 
     # C Extension
     'CMySQLConnection',
-    ]
+]

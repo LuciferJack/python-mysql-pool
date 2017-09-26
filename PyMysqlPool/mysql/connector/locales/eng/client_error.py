@@ -92,4 +92,3 @@ CR_DUPLICATE_CONNECTION_ATTR = u"There is an attribute with the same name alread
 CR_AUTH_PLUGIN_ERR = u"Authentication plugin '%s' reported error: %s"
 CR_INSECURE_API_ERR = u"Insecure API function call: '%s' Use instead: '%s'"
 # End MySQL Error messages
-

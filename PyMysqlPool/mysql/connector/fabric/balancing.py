@@ -23,7 +23,6 @@
 
 """Implementing load balancing"""
 
-
 import decimal
 
 
@@ -32,12 +31,11 @@ def _calc_ratio(part, whole):
 
     Returns int
     """
-    return int((part/whole*100).quantize(
+    return int((part / whole * 100).quantize(
         decimal.Decimal('1'), rounding=decimal.ROUND_HALF_DOWN))
 
 
 class BaseScheduling(object):
-
     """Base class for all scheduling classes dealing with load balancing"""
 
     def __init__(self):
@@ -80,7 +78,6 @@ class BaseScheduling(object):
 
 
 class WeightedRoundRobin(BaseScheduling):
-
     """Class for doing Weighted Round Robin balancing"""
 
     def __init__(self, *args):
@@ -122,7 +119,7 @@ class WeightedRoundRobin(BaseScheduling):
         min_weight = min(i[1] for i in self._members)
         self._ratios = []
         for _, weight in self._members:
-            self._ratios.append(int(weight/min_weight * 100))
+            self._ratios.append(int(weight / min_weight * 100))
         self.reset()
 
     def reset(self):

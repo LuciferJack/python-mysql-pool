@@ -76,7 +76,6 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
-
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -110,12 +109,10 @@ html_sidebars = {
     ]
 }
 
-
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'PyMysqlPooldoc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -145,7 +142,6 @@ latex_documents = [
      u'Lucifer Jack', 'manual'),
 ]
 
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
@@ -154,7 +150,6 @@ man_pages = [
     (master_doc, 'pymysqlpool', u'PyMysqlPool Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 
@@ -166,6 +161,3 @@ texinfo_documents = [
      author, 'PyMysqlPool', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-

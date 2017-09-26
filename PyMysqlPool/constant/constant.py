@@ -3,18 +3,17 @@
 # coding=utf-8
 import os
 
-from  PyMysqlPool.util.logger import  *
+from  PyMysqlPool.util.logger import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 currentPath = os.path.split(os.path.realpath(__file__))[0]
-#below is example
-#loggingerr=currentPath+'/../log/logging.err'
+# below is example
+# loggingerr=currentPath+'/../log/logging.err'
 
-loggErrorFile=''
-loggingerr=currentPath+'/../log/%s' % (loggErrorFile,)
-
+loggErrorFile = ''
+loggingerr = currentPath + '/../log/%s' % (loggErrorFile,)
 
 # MAIN
 # ===============================================
