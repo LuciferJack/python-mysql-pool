@@ -8,10 +8,8 @@ from PyMysqlPool.db_util.mysql_pool import get_pool_connection
 from PyMysqlPool.mysql.connector.dpooling import PooledMySQLConnection
 from PyMysqlPool.util.log_util import get_caller_info_total, get_caller_function
 from PyMysqlPool.util.logger_err import rootLogger
-
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
 import MySQLdb
 
 
@@ -168,9 +166,7 @@ def insertOrUpdate_getId(_db_config, _sql, _args):
     config = _db_config
     conn = MySQLdb.connect(host=config['host'], port=config['port'], user=config['user'], passwd=config['passwd'],
                            db=config['db'], charset=config['charset'], use_unicode=True)
-    # conn = get_pool_connection(_db_config)
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
-    # conn.autocommit(True) #replace False -> True
     try:
         cursor.execute(_sql, _args)
         id = conn.insert_id()
@@ -202,7 +198,6 @@ def check_record_exsit(_db_config, _sql, _args):
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     else:
         cursor = conn.cursor(buffered=True)
-    # conn.autocommit(True) #replace False -> True
     try:
         cursor.execute(_sql, _args)  # conn.commit()
         result = cursor.rowcount

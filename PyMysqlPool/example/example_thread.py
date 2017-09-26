@@ -4,7 +4,6 @@
 import logging
 import sys
 from threading import Thread
-
 from PyMysqlPool.example.example_case import d_query
 
 
