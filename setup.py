@@ -39,7 +39,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.0.5',
+    version='1.0.6',
 
     description='python practical mysql pool -motivation from=>[lost connection to MySQL server during query]  base on mysql-connector '
                 'support fixed | dynamic pool',
@@ -96,7 +96,11 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
 
-    # install_requires=['peppercorn'],
+     install_requires=[
+         'wheel',
+         'mysqlclient',
+         'mysql-connector-python-rf',
+     ],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
