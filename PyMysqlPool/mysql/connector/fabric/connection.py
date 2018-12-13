@@ -1486,6 +1486,11 @@ class MySQLFabricConnection(object):
             dbconfig['port'] = mysqlserver.port
             try:
                 self._mysql_cnx = PyMysqlPool.mysql.connector.connect(**dbconfig)
+                cnx.start_transaction(
+                    consistent_snapshot=dbconfig.get('consistent_snapshot', False),
+                    isolation_level=dbconfig.get('isolation_level', None),
+                    readonly=dbconfig.get('readonly', None),
+                )
             except Error as exc:
                 if counter == attempts:
                     self.reset_cache(mysqlserver.group)
