@@ -419,6 +419,12 @@ class DatabaseWrapper(BaseDatabaseWrapper):
             conn_params['converter_class'] = DjangoMySQLConverter
         cnx = PyMysqlPool.mysql.connector.connect(**conn_params)
 
+        cnx.start_transaction(
+            consistent_snapshot=conn_params.get('consistent_snapshot', False),
+            isolation_level=conn_params.get('isolation_level', None),
+            readonly=conn_params.get('readonly', None),
+        )
+
         return cnx
 
     def init_connection_state(self):

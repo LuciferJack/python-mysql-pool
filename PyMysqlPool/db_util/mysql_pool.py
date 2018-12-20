@@ -55,4 +55,11 @@ def get_pool_conn_implicitly(_db_config):
                                db=config['db'],
                                charset=config['charset'],
                                use_unicode=True)
+
+    conn.start_transaction(
+        consistent_snapshot=config.get('consistent_snapshot', False),
+        isolation_level=config.get('isolation_level', None),
+        readonly=config.get('readonly', None),
+    )
+
     return conn

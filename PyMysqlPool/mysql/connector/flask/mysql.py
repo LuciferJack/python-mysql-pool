@@ -55,6 +55,12 @@ class MySQL(object):
             self.connect_args['use_unicode'] = self.app.config['MYSQL_USE_UNICODE']
         if self.app.config['MYSQL_USE_POOL']:
             self.connect_args['pool'] = self.app.config['MYSQL_USE_POOL']
+        if self.app.config['MYSQL_CONSISTENT_SNAPSHOT']:
+            self.connect_args['consistent_snapshot'] = self.app.config['MYSQL_CONSISTENT_SNAPSHOT']
+        if self.app.config['MYSQL_ISOLATION_LEVEL']:
+            self.connect_args['isolation_level'] = self.app.config['MYSQL_ISOLATION_LEVEL']
+        if self.app.config['MYSQL_READONLY']:
+            self.connect_args['readonly'] = self.app.config['MYSQL_READONLY']
         return get_pool_conn_implicitly(self.connect_args)
 
     def teardown_request(self, exception):

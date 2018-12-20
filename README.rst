@@ -78,6 +78,7 @@ The following  prototype_ pool examples below:
             'host': "10.95.130.***", 'port': 8899,
             'user': "root", 'passwd': "****",
             'db': "marry", 'charset': "utf8",
+            'isolation_level': 'READ COMMITTED',
             'pool': {
                 #use = 0 no pool else use pool
                 "use":1,
@@ -175,6 +176,7 @@ The following  prototype_ pool examples below:
         'HOST': '10.95.130.***',
         'PORT': '8899',
         'OPTIONS': {
+            'isolation_level': 'READ COMMITTED',
             'autocommit': True,
             'pool': {
                 #use = 0 no pool else use pool
@@ -206,6 +208,7 @@ The following  prototype_ pool examples below:
         MYSQL_DATABASE_USER='root',
         MYSQL_DATABASE_PASSWORD='******',
         MYSQL_DATABASE_DB='flask',
+        MYSQL_ISOLATION_LEVEL='READ COMMITTED',
         MYSQL_USE_POOL=
         {
             #use = 0 no pool else use pool

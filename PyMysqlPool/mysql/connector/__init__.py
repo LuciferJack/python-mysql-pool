@@ -103,9 +103,11 @@ def _get_failover_connection(**kwargs):
         raise ValueError('failover argument not provided')
     del config['failover']
 
-    support_cnx_args = set(
-        ['user', 'password', 'host', 'port', 'unix_socket',
-         'database', 'pool_name', 'pool_size'])
+    support_cnx_args = set([
+        'user', 'password', 'host', 'port', 'unix_socket',
+        'database', 'pool_name', 'pool_size', 'consistent_snapshot',
+        'init_command', 'readonly'
+    ])
 
     # First check if we can add all use the configuration
     for server in failover:
